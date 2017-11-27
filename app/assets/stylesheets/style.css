@@ -1,0 +1,311 @@
+body {
+  background-image: url('http://www.freeppt.net/template/business_graphic_ppt_template.jpg');
+  background-size: cover;
+}
+
+.btn3d {
+	position: relative;
+	top: -6px;
+	border: 0;
+	transition: all 40ms linear;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 2px;
+	margin-right: 2px;
+}
+
+.btn3d:active:focus,
+.btn3d:focus:hover,
+.btn3d:focus {
+	-moz-outline-style: none;
+	outline: medium none;
+}
+
+.btn3d:active,
+.btn3d.active {
+	top: 2px;
+}
+
+.btn3d.btn-info {
+	box-shadow: 0 0 0 1px #00a5c3 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 2px 0 0 #348FD2, 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+	background-color: #39B3D7;
+}
+
+.btn3d.btn-info:active,
+.btn3d.btn-info.active {
+	box-shadow: 0 0 0 1px #00a5c3 inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+	background-color: #39B3D7;
+}
+
+.container {
+  margin-top: 30px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header {
+  display: inline-block;
+  background-image: url('header.png');
+  height: 80px;
+  width: 100%;
+  background-size: 100% 100%;
+}
+
+.logo {
+  height: 80px;
+  display: inline-block;
+  float: left;
+  width: 30%;
+  text-align: justify;
+  color: white;
+}
+
+.logo img {
+  margin-left: 3%;
+  margin-top: 1%;
+  height: 80%;
+  display: inline-block;
+}
+
+.logo h2 {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.signin {
+  height: 80px;
+  display: inline-block;
+  float: right;
+  width: 35%;
+}
+
+.signin button {
+  height: 50%;
+  margin: 5%;
+  border-width: medium;
+}
+
+.searchTerm {
+  height: 50%;
+  width: 50%;
+}
+
+.search img{
+  display: inline-block;
+  height: 20px;
+}
+
+.fix {
+  clear: both;
+}
+
+.welcomeImage {
+  height: 500px;
+  width: 80%;
+  display: inline-block;
+  margin-top: 2%;
+}
+
+.topics {
+  display: inline-block;
+  width: 100%;
+}
+
+.title {
+  margin: 2% 0;
+}
+
+.topic {
+  display: inline-block;
+  width: 30%;
+  height: 250px;
+  margin: 0 1.5%;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 5%;
+  vertical-align: top;
+}
+
+.profileBody {
+  margin-top: 4%;
+  width: 100%;
+  display: inline-block;
+  height: 300px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 1%;
+}
+
+.profileBody-left {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  vertical-align: middle;
+  text-align: left;
+  margin-top: 2%;
+}
+
+.profileBody-left h1 {
+  margin: 15 0 0 10;
+}
+
+.userName h4 {
+  position: relative;
+  display: inline-block;
+  margin-top: 2%;
+}
+
+.currentCity h4 {
+  position: relative;
+  display: inline-block;
+  margin-top: 2%;
+}
+
+.joinDate h4 {
+  position: relative;
+  display: inline-block;
+  margin-top: 2%;
+}
+
+.editicon {
+  position: relative;
+  height: 15px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.editicon:hover {
+  cursor:pointer;
+}
+
+.profileBody-right {
+  display: inline-block;
+  width: 20%;
+  height: 70%;
+  vertical-align: middle;
+}
+.personalIcon{
+  display: inline-block;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.personalEditicon {
+  position: relative;
+  height: 15px;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.personalEditicon:hover {
+  cursor:pointer;
+}
+
+.posts {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  width: 100%;
+  display: inline-block;
+  background-image: url('./images/post.jpg');
+  border-radius: 1%;
+  background-size: 100% 100%;
+  color: white;
+}
+
+.post {
+  text-align: justify;
+  width: 60%;
+  display: inline-block;
+  color: white;
+  border-bottom: 2px solid white;
+  margin-bottom: 2%;
+}
+
+.item {
+  max-width:960px;
+  max-height:500px;
+}
+
+.item img {
+  min-width:100%;
+  min-height: 400px;
+}
+
+.city-list {
+  background-color: rgba(100, 100, 100, 0.5);
+  margin-top: 2%;
+  border-radius: 5%;
+  display: inline-block;
+  margin-right: 1%;
+  width: 24%;
+}
+
+.city {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 2px solid grey;
+  margin: 0 auto;
+  border-radius: 15%;
+  margin-bottom: 5%;
+  cursor:pointer;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.7) inset, 0 0 0 2px rgba(255, 255, 255, 0.7) inset, 0 2px 0 0 rgba(255, 255, 255, 0.7), 0 5px 5px 1px rgba(255, 255, 255, 0.7);
+}
+
+.city:active,
+.city.active {
+	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.7) inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+	background-color: white;
+}
+
+.city img {
+  height: 25px;
+  margin-top: 3%;
+}
+
+.selected-city {
+  background-color: rgba(0, 100, 100, 0.5);
+  margin-top: 2%;
+  border-radius: 5%;
+  display: inline-block;
+}
+
+.selected-city-header {
+  height: 300px;
+}
+
+.selected-city-name {
+  margin-top: 2%
+}
+
+.selected-city-name h1 {
+  font-weight: bold;
+}
+
+.selected-city-img {
+  margin-top: 2%
+}
+
+.button-post {
+  border-radius: 50% 50% 50% 50%;
+  box-shadow: 0 0 0 1px darkorange inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 2px 0 0 darkorange, 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+  background-color: orange;
+}
+
+.button-post:active,
+.button-post.active {
+	box-shadow: 0 0 0 1px darkorange inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+	background-color: orange;
+}
+
+.button-post span{
+  color: white;
+  font-size: 24px;
+  padding: auto;
+}
+
+.button-left {
+  text-align: left;
+}
+
+.button-left label {
+  color: white;
+  font-size: 20px;
+  margin-left: 1%;
+}

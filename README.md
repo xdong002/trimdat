@@ -3,7 +3,7 @@
 Trimdat allows users to upload .csv or .txt files and use our web app to auto-magically clean the data. Users can create new profiles/login to see old files or upload new ones, choose from an array of options on what they would like done to their file (i.e. remove duplicate data, view word count, sort A<->Z), and email themselves a copy of the trimmed data.  
 
 * Ruby version
-
+  ruby 2.3.3p222
 * System dependencies
 
 * Configuration
