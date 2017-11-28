@@ -1,30 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LibApp</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>world of wordcraft</title>
+    <!-- <link rel="icon" href=""> -->
+    <!-- why didn't the icon change? -->
+    <!-- <link rel="shortcut icon" href="sword-icon.png"/> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- HAVE TO INCLUDE VALIDATOR TO USE VALIDATOR!!!! THIS THING TOOK ME AN HOUR TO SOLVE -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Oregano" rel="stylesheet">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <div class="nav">
+<body>
+    <ul>
       <% if current_user %>
         <button><%= link_to "Home", "/" %></button>
         <button><%= link_to "Profile", user_path(current_user) %></button>
         <button><%= link_to "Log Out", logout_path %></button>
       <% else %>
-        <button><%= link_to "Home", "/" %></button>
-        <button><%= link_to "Create Account", new_user_path %></button>
-        <button><%= link_to "Log In", login_path %></button>
-      <% end %>
-    </div>
-    <% flash.each do |name, msg| %>
-      <p>
-        <small> <%= name.capitalize %>: <%= msg %> </small>
-      </p>
-    <% end %>
+        <li><%= link_to "Create Account", new_user_path %></li>
+        <li><%= link_to "Log In", login_path %></li>
+        <% end %>
+      </ul>
+      <% flash.each do |name, msg| %>
+        <p>
+          <small><%= name.capitalize %>: <%= msg %> </small>
+        </p>
+        <% end %>
     <%= yield %>
-  </body>
+</body>
 </html>
