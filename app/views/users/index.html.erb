@@ -1,7 +1,7 @@
     <div class="container">
       <header>
         <div class="logo">
-          <img src="/Users/mariaarbisman/WDI/trimdat/app/assets/images/excelLogo.png" alt="Trimdat" height="50" width="45">
+          <!-- <img src="/Users/mariaarbisman/WDI/trimdat/app/assets/images/excelLogo.png" alt="Trimdat" height="50" width="45"> -->
           <h2>Trimdat</h2>
         </div>
         <div class="signin">
@@ -15,15 +15,7 @@
         </div>
 
       </header>
-        <form id="testAjax">
-        <div>
-          <input placeholder="Username" type="text" name="user_name" id="user_user_name">
-        </div>
-        <div>
-          <input placeholder="Password" type="password" name="password" id="user_password">
-        </div>
-        <input type="submit" value="Log In" data-disable-with="Log In">
-      </form>
+      
       <div class="welcomeImage">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
@@ -101,17 +93,27 @@
       <div class="modal-dialog">
         <div class="modal-content">
         <!-- Modal Header -->
-                    <div class="modal-header">
-                        <button type="button" class="close"
-                           data-dismiss="modal">
-                               <span aria-hidden="true">&times;</span>
-                               <span class="sr-only">Close</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">
-                            Sign In
-                        </h4>
-                    </div>
-
+            <div class="modal-header">
+                <button type="button" class="close"
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Sign In
+                </h4>
+            <div class="modal-body">
+            </div>
+              <%= form_for @user, url: "/sessions", method: "post" do |f| %>
+            <div>
+              <%= f.text_field :user_name, placeholder: "Username" %>
+            </div>
+            <div>
+              <%= f.password_field :password, placeholder: "Password" %>
+            </div>
+            <%= f.submit "Log In"%>
+            <%end%>
+            </div>
         </div>
       </div>
     </div>
@@ -130,6 +132,20 @@
                           <h4 class="modal-title">
                               Sign Up Form
                           </h4>
+                      </div>
+                      <div class="modal-body">
+                        <%= form_for @user, url: sign_up_path, method: "post" do |f| %>
+                        <div>
+                          <%= f.text_field :user_name, placeholder: "Username" %>
+                        </div>
+                        <div>
+                          <%= f.text_field :email, placeholder: "Email" %>
+                        </div>
+                        <div>
+                          <%= f.password_field :password, placeholder: "Password" %>
+                        </div>
+                        <%= f.submit "Sign up"%>
+                        <%end%>
                       </div>
 
           </div>
