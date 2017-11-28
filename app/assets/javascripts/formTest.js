@@ -1,5 +1,5 @@
 $(document).ready(function(){
-alert("yo")
+
   $("#testAjax").on('submit', function(e){
     e.preventDefault()
     serializedData = $(this).serialize()
