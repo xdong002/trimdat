@@ -1,5 +1,9 @@
 class SessionsController < ApplicationController
 
+  # This is for about page
+  def index
+  end
+
   def new
     @user = User.new
   end
