@@ -8,9 +8,10 @@
     </div>
     <div class="signin">
 
+      <div class="btn"><%= link_to "About", about_path, :class => "btn btn-info btn-lg btn3d" %></div>
       <button class="btn btn-info btn-lg btn3d" type="button" name="signin" data-toggle="modal" data-target="#myModalSignIn">Sign In</button>
       <button class="btn btn-info btn-lg btn3d" type="button" name="signup" data-toggle="modal" data-target="#myModalSignUp">Sign Up</button>
-
+      <!-- <%= button_to("About", about_path, method: :get, :class => "btn btn_info btn-lg btn3d") %> -->
     </div>
 
     <div class="fix">
@@ -111,8 +112,17 @@
 
                 <!-- Modal Body -->
                 <div class="modal-body">
+                    <%= form_for @user, url: "/sessions", method: "post" do |f| %>
+                    <div>
+                      <%= f.text_field :user_name, placeholder: "Username" %>
+                    </div>
+                    <div>
+                      <%= f.password_field :password, placeholder: "Password" %>
+                    </div>
+                    <%= f.submit "Log In"%>
+                    <%end%>
 
-                    <form role="form">
+                    <!-- <form role="form">
                       <div class="form-group">
                         <label for="inputUsername">Username</label>
                           <input type="text" class="form-control"
@@ -124,7 +134,7 @@
                               id="inputPassword" placeholder="Password"/>
                       </div>
                       <button type="submit" class="btn btn-default">Submit</button>
-                    </form>
+                    </form> -->
 
 
                 </div>
@@ -158,8 +168,19 @@
 
                   <!-- Modal Body -->
                   <div class="modal-body">
-
-                      <form role="form">
+                      <%= form_for @user, url: sign_up_path, method: "post" do |f| %>
+                      <div>
+                        <%= f.text_field :user_name, placeholder: "Username" %>
+                      </div>
+                      <div>
+                        <%= f.text_field :email, placeholder: "Email" %>
+                      </div>
+                      <div>
+                        <%= f.password_field :password, placeholder: "Password" %>
+                      </div>
+                      <%= f.submit "Sign up"%>
+                      <%end%>
+                      <!-- <form role="form">
                         <div class="form-group">
                           <label for="inputUsernameSignUp">Username</label>
                             <input type="text" class="form-control"
@@ -171,7 +192,7 @@
                                 id="inputPasswordSignUp" placeholder="Password"/>
                         </div>
                         <button type="submit" class="btn btn-default">Sign Up</button>
-                      </form>
+                      </form> -->
 
 
                   </div>
