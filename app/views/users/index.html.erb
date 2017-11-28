@@ -1,18 +1,3 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Trimdat</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.js" ></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <script src="app.js"></script>
-
-
-  </head>
-  <body>
     <div class="container">
       <header>
         <div class="logo">
@@ -120,30 +105,19 @@
 
                     <!-- Modal Body -->
                     <div class="modal-body">
-
-                        <form role="form">
-                          <div class="form-group">
-                            <label for="inputUsername">Username</label>
-                              <input type="text" class="form-control"
-                              id="inputUsername" placeholder="Enter Username"/>
-                          </div>
-                          <div class="form-group">
-                            <label for="inputPassword">Password</label>
-                              <input type="password" class="form-control"
-                                  id="inputPassword" placeholder="Password"/>
-                          </div>
-                          <button type="submit" class="btn btn-default">Submit</button>
-                        </form>
-
-
+                      <%= form_for @user, url: "/sessions", method: "post" do |f| %>
+                        <div>
+                          <%= f.text_field :email, placeholder: "Email Address" %>
+                        </div>
+                        <div>
+                          <%= f.password_field :password, placeholder: "Password" %>
+                        </div>
                     </div>
 
                     <!-- Modal Footer -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default"
-                                data-dismiss="modal">
-                                    Close
-                        </button>
+                      <%= f.submit "Log In"%>
+                      <%end%>
                     </div>
         </div>
       </div>
@@ -168,33 +142,26 @@
                       <!-- Modal Body -->
                       <div class="modal-body">
 
-                          <form role="form">
+                        <%= form_for @user do |f|%>
                             <div class="form-group">
-                              <label for="inputUsernameSignUp">Username</label>
-                                <input type="text" class="form-control"
-                                id="inputUsernameSignUp" placeholder="Enter Username"/>
+                                <%= f.text_field :user_name, placeholder: "User Name"%>
                             </div>
                             <div class="form-group">
-                              <label for="inputPassword">Password</label>
-                                <input type="password" class="form-control"
-                                    id="inputPasswordSignUp" placeholder="Password"/>
+                              <%=f.text_field :email, placeholder: "Email Address" %>
                             </div>
-                            <button type="submit" class="btn btn-default">Sign Up</button>
-                          </form>
+                            <div class="form-group">
+                              <%=f.password_field :password, placeholder: "Password" %>
+                            </div>
+
 
 
                       </div>
 
                       <!-- Modal Footer -->
                       <div class="modal-footer">
-                          <button type="button" class="btn btn-default"
-                                  data-dismiss="modal">
-                                      Close
-                          </button>
+                        <%= f.submit "Sign Up"%>
+                        <%end%>
                       </div>
           </div>
         </div>
       </div>
-
-  </body>
-</html>
