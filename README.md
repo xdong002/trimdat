@@ -24,6 +24,8 @@ Users will be able to:
 - parsing data within csv and txt files
 - transforming files into other types of files (formatting)
 - saving large files to our database
+- login using Google and auto-save to their google sheets
+- format data into html tables or convert to pdf 
 
 
 * Who is in charge of what
@@ -39,7 +41,7 @@ BACKEND
 
 * Ruby version
   ruby 2.3.3p222
-  
+
 * System dependencies
 
 * Configuration
