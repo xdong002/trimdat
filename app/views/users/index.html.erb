@@ -8,9 +8,10 @@
     </div>
     <div class="signin">
 
+      <div class="btn"><%= link_to "About", about_path, :class => "btn btn-info btn-lg btn3d" %></div>
       <button class="btn btn-info btn-lg btn3d" type="button" name="signin" data-toggle="modal" data-target="#myModalSignIn">Sign In</button>
       <button class="btn btn-info btn-lg btn3d" type="button" name="signup" data-toggle="modal" data-target="#myModalSignUp">Sign Up</button>
-
+      <!-- <%= button_to("About", about_path, method: :get, :class => "btn btn_info btn-lg btn3d") %> -->
     </div>
 
     <div class="fix">
@@ -111,7 +112,7 @@
 
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <%= form_for @user, url: "/sessions", method: "post" do |f| %>
+                    <%= form_for @user, url: login_path, method: "post" do |f| %>
                     <div>
                       <%= f.text_field :user_name, placeholder: "Username" %>
                     </div>

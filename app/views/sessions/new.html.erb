@@ -1,4 +1,4 @@
-  <%= form_for @user, url: "/sessions", method: "post" do |f| %>
+  <%= form_with model: @user, url: login_path, method: "post" do |f| %>
     <div>
       <%= f.text_field :user_name, placeholder: "Username" %>
     </div>
