@@ -42,9 +42,10 @@
             <%= button_to("Home", '/', method: :get, :class => "btn btn-lg btn3d") %>
           </div>
         <%else%>
-        <div class="signin">
-          <button class="btn btn-lg btn3d" type="button" name="signup" data-toggle="modal" data-target="#myModalSignUp">Sign Up</button>
-          <button class="btn btn-lg btn3d" type="button" name="signin" data-toggle="modal" data-target="#myModalSignIn">Sign In</button>
+          <div class="signin">
+            <button class="btn btn-lg btn3d" type="button" name="signup" data-toggle="modal" data-target="#myModalSignUp">Sign Up</button>
+            <button class="btn btn-lg btn3d" type="button" name="signin" data-toggle="modal" data-target="#myModalSignIn">Sign In</button>
+          </div>
         <%end%>
         <div class="fix">
         </div>
@@ -160,7 +161,7 @@
 
             <!-- Modal Body -->
             <div class="modal-body">
-            <%= form_with model: @document, url: login_path, method: "post" do |f| %>
+            <%= form_with scope: :document, url: documents_new_path, method: "post" do |f| %>
             <div>
             <%= f.file_field :file %>
             </div>
