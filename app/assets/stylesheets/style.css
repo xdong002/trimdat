@@ -479,3 +479,7 @@ hr {
   border-bottom-left-radius: 25px;
   font-weight: bold;
 }
+
+a:hover {
+  color: darkred;
+}

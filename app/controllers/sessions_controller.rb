@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 
   # This is for about page
   def index
+    @user = User.new
   end
 
   def new
@@ -13,7 +14,7 @@ class SessionsController < ApplicationController
     @user = User.confirm(user_params)
     if @user
       login (@user)
-      redirect_to @user
+      redirect_to user_path
     else
       redirect_to login_path
     end
