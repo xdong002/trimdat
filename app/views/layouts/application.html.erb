@@ -37,11 +37,13 @@
         <li><%= link_to "Log In", login_path %></li>
         <% end %>
       </ul>
+
       <% flash.each do |key, value| %>
         <div class="<%= flash_class(key) %>">
           <%= value %>
         </div>
       <% end %>
+      
     <%= yield %>
 
     <!-- Modal for sign in -->
