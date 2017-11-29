@@ -1,3 +1,172 @@
-<div>
-  Welcome, <%=@user.user_name%>
+<div class="container">
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        <img src= '<%=image_path("logo.png")%>' alt="">
+      </a>
+      <h2>Trimdat</h2>
+    </div>
+    <div class="signin">
+
+      <button class="btn btn-info btn-lg btn3d" type="button" name="signin" data-toggle="modal" data-target="#myModalSignIn">Sign In</button>
+      <button class="btn btn-info btn-lg btn3d" type="button" name="signup" data-toggle="modal" data-target="#myModalSignUp">Sign Up</button>
+
+    </div>
+
+    <div class="fix">
+    </div>
+
+  </header>
+  <div class="mainContent">
+    <div class="contentNav">
+      <a href="product.html">All</a>
+      <a href="processing.html">Processing</a>
+      <a href="compeleted.html">Completed</a>
+      <button class="btn button-post btn-lg btn3d" type="button" data-toggle="modal" data-target="#newPost">+</button>
+    </div>
+    <hr>
+    <div class="contentBox">
+
+      <div class="content">
+        <div class="fileContainer">
+          <div class="file">
+            <img src='<%=image_path("file.png")%>' alt="file">
+          </div>
+          <div class="fileName">
+            <h4>FileName</h4>
+          </div>
+          <div class="completedFile">
+            <img class="completed" src='<%=image_path("file.png")%>'>
+            <img class="check" src='<%=image_path("check.png")%>'>
+          </div>
+        </div>
+        <div class="progressBar">
+          <div class="meterInitial">
+          </div>
+          <div class="progressWord">
+            <span>15% : Pending</span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="content">
+        <div class="fileContainer">
+          <div class="file">
+            <img src='<%=image_path("file.png")%>' alt="file">
+          </div>
+          <div class="fileName">
+            <h4>FileName</h4>
+          </div>
+          <div class="completedFile">
+            <img class="completed" src='<%=image_path("file.png")%>'>
+            <img class="check" src='<%=image_path("check.png")%>'>
+          </div>
+        </div>
+        <div class="progressBar">
+          <div class="meterprocessing">
+          </div>
+          <div class="progressWord">
+            <span>35% : Processing</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="fileContainer">
+          <div class="file">
+            <img src='<%=image_path("file.png")%>' alt="file">
+          </div>
+          <div class="fileName">
+            <h4>FileName</h4>
+          </div>
+          <div class="completedFile">
+            <img class="completed" src='<%=image_path("file.png")%>'>
+            <img class="check" src='<%=image_path("check.png")%>'>
+          </div>
+        </div>
+        <div class="progressBar">
+          <div class="meterprocessing">
+          </div>
+          <div class="progressWord">
+            <span>35% : Processing</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="fileContainer">
+          <div class="file">
+            <img src='<%=image_path("file.png")%>' alt="file">
+          </div>
+          <div class="fileName">
+            <h4>FileName</h4>
+          </div>
+          <div class="completedFile">
+            <img class="completed" src='<%=image_path("file.png")%>'>
+            <img class="check" src='<%=image_path("check.png")%>'>
+          </div>
+        </div>
+        <div class="progressBar">
+          <div class="meterFinalCheck">
+          </div>
+          <div class="progressWord">
+            <span>75% : Final Check</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="fileContainer">
+          <div class="file">
+            <img src='<%=image_path("file.png")%>' alt="file">
+          </div>
+          <div class="fileName">
+            <h4>FileName</h4>
+          </div>
+          <div class="completedFile">
+            <img class="completed" src='<%=image_path("file.png")%>'>
+            <img class="check" src='<%=image_path("check.png")%>'>
+          </div>
+        </div>
+        <div class="progressBar">
+          <div class="meterCompleted">
+          </div>
+          <div class="progressWord">
+            <span>100% : Completed</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="fileContainer">
+          <div class="file">
+            <img src='<%=image_path("file.png")%>' alt="file">
+          </div>
+          <div class="fileName">
+            <h4>FileName</h4>
+          </div>
+          <div class="completedFile">
+            <img class="completed" src='<%=image_path("file.png")%>'>
+            <img class="check" src='<%=image_path("check.png")%>'>
+          </div>
+        </div>
+        <div class="progressBar">
+          <div class="meterCompleted">
+          </div>
+          <div class="progressWord">
+            <span>100% : Completed</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <h2>This is footer</h2>
+  </div>
+
+
 </div>

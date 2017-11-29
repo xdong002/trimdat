@@ -1,6 +1,7 @@
 body {
   background-image: url('http://www.freeppt.net/template/business_graphic_ppt_template.jpg');
   background-size: cover;
+  text-align: center;
 }
 
 .btn3d {
@@ -39,7 +40,6 @@ body {
 
 .container {
   margin-top: 30px;
-  text-align: center;
   margin-bottom: 20px;
 }
 
@@ -284,20 +284,17 @@ header {
 
 .button-post {
   border-radius: 50% 50% 50% 50%;
-  box-shadow: 0 0 0 1px darkorange inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 2px 0 0 darkorange, 0 8px 8px 1px rgba(0, 0, 0, 0.5);
-  background-color: orange;
+  box-shadow: 0 0 0 1px darkgrey inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 2px 0 0 darkgrey, 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+  background-color: white;
+  margin-top: -1%;
+  padding: 2px 9px;
+  color: black;
 }
 
 .button-post:active,
 .button-post.active {
-	box-shadow: 0 0 0 1px darkorange inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, 0.3);
-	background-color: orange;
-}
-
-.button-post span{
-  color: white;
-  font-size: 24px;
-  padding: auto;
+	box-shadow: 0 0 0 1px darkgrey inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+	background-color: white;
 }
 
 .button-left {
@@ -312,7 +309,7 @@ header {
 
 .footer {
   height: 100px;
-  background-color: rgba(0, 255, 255, 0.7);
+  background-color: CornflowerBlue;
   width: 100%;
   margin-top: 3%;
 }
@@ -343,7 +340,7 @@ header {
 }
 
 .mainContent {
-  background-color: grey;
+  background-color: CadetBlue;
   height: cover;
   width: 90%;
   display: inline-block;
@@ -368,11 +365,6 @@ hr {
   border-right: 2px solid white;
 }
 
-.btnnew {
-  border-radius: 50% 50% 50% 50%;
-  padding: 2px 9px;
-  margin-top: -1%;
-}
 
 .content {
   display: inline-block;
@@ -432,8 +424,8 @@ hr {
   border-bottom-left-radius: 25px;
 }
 
-.progressWord span {
-  margin-top: -50px;
+.progressWord {
+  margin-top: -3vh;
 }
 
 .meterInitial {
@@ -482,4 +474,9 @@ hr {
 
 a:hover {
   color: darkred;
+}
+
+.flashBox {
+  width: 30%;
+  display: inline-block;
 }
