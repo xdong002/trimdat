@@ -479,4 +479,5 @@ a:hover {
 .flashBox {
   width: 30%;
   display: inline-block;
+  margin: 0;
 }
