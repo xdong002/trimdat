@@ -432,8 +432,8 @@ hr {
   border-bottom-left-radius: 25px;
 }
 
-.progressWord span {
-  margin-top: -50px;
+.progressWord {
+  margin-top: -3vh;
 }
 
 .meterInitial {

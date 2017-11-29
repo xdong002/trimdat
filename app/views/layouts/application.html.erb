@@ -37,13 +37,13 @@
         <li><%= link_to "Log In", login_path %></li>
         <% end %>
       </ul>
-      <% flash.each do |name, msg| %>
-        <p>
-          <small><%= name.capitalize %>: <%= msg %> </small>
-        </p>
-        <% end %>
+      <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %>">
+          <%= value %>
+        </div>
+      <% end %>
     <%= yield %>
-    
+
     <!-- Modal for sign in -->
     <div class="modal fade" id="myModalSignIn" role="dialog">
       <div class="modal-dialog">
