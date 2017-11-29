@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 
   # This is for about page
   def index
+    @user = User.new
   end
 
   def new
@@ -10,6 +11,7 @@ class SessionsController < ApplicationController
 
   def create
     user_params = params.require(:user).permit(:user_name, :password)
+    puts "user_params #{user_params}"
     @user = User.confirm(user_params)
     if @user
       login (@user)

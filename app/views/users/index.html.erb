@@ -112,7 +112,7 @@
 
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <%= form_for @user, url: "/sessions", method: "post" do |f| %>
+                    <%= form_for @user, url: login_path, method: "post" do |f| %>
                     <div>
                       <%= f.text_field :user_name, placeholder: "Username" %>
                     </div>
