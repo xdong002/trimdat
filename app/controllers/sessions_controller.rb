@@ -15,8 +15,10 @@ class SessionsController < ApplicationController
     @user = User.confirm(user_params)
     if @user
       login (@user)
+
       flash[:notice]="Successfully logged in."
       redirect_to @user
+
     else
       flash[:error] = "Incorrect username or password."
       redirect_to login_path
