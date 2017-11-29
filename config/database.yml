@@ -20,9 +20,10 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
   username: <%= ENV["db_username"]%>
   password: <%= ENV["db_password"]%>
-
+  
 development:
   <<: *default
   database: trimdat_development
@@ -83,3 +84,5 @@ test:
 production:
   <<: *default
   database: trimdat_production
+  username: trimdat
+  password: <%= ENV['LIB-APP_DATABASE_PASSWORD'] %>

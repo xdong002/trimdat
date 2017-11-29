@@ -31,7 +31,7 @@
       <% if current_user %>
         <button><%= link_to "Home", "/" %></button>
         <button><%= link_to "Profile", user_path(current_user) %></button>
-        <button><%= link_to "Log Out", logout_path %></button>
+        <button><%= link_to "Log Out", logout_path, method: :delete %></button>
       <% else %>
         <li><%= link_to "Create Account", new_user_path %></li>
         <li><%= link_to "Log In", login_path %></li>
@@ -64,7 +64,7 @@
 
                     <!-- Modal Body -->
                     <div class="modal-body">
-                        <%= form_for @user, url: "/sessions", method: "post" do |f| %>
+                        <%= form_for @user, url: login_path, method: "post" do |f| %>
                         <div>
                           <%= f.text_field :user_name, placeholder: "Username" %>
                         </div>
