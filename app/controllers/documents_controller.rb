@@ -1,4 +1,8 @@
 class DocumentsController < ApplicationController
+mashas-dev
+  # array_of_lines = []
+
+  def index
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
   # GET /documents
@@ -13,6 +17,11 @@ class DocumentsController < ApplicationController
 
   # GET /documents/new
   def new
+  #import the file as an array
+  # File.open("./FL_insurance_sample.csv", "r") do |f|
+  #   f.each_line do |line|
+  #   array_of_lines += line.split(/\t|\n|\r|\r\n/)
+  # end
     @document = Document.new
   end
 
@@ -30,8 +39,19 @@ class DocumentsController < ApplicationController
     end
   end
 
+
+  # def sort_by_first_value_number()
+  # #sort by first value, if number is the first value
+  # #converting to integers and comparing two items in the callback (sorting on them)
+  # array_of_lines! { |a, b| a[0].to_i <=> b[0].to_i }
+  # #modify the existing array
+  # array_of_lines.uniq!(&:first)
+  # array_of_lines.each { |line| p line }
+  # end
+
   # PATCH/PUT /documents/1
   # PATCH/PUT /documents/1.json
+    
   def update
     # new_contents = erase_blank(@document.file_contents.to_s)
     # puts "document.file_contents is : #{@document.file_contents}"
