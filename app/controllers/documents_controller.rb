@@ -1,18 +1,19 @@
 class DocumentsController < ApplicationController
-mashas-dev
-  # array_of_lines = []
 
-  def index
-  before_action :set_document, only: [:show, :edit, :update, :destroy]
+  before_action :set_document, only: [:show, :edit, :update, :destroy, :download_origin]
 
   # GET /documents
   # def index
   #   @documents = Document.all
   # end
 
+  def download_origin
+    send_data(@document.original_file, type: @document.data_type, filename: @document.name)
+  end
+
   # GET /documents/1
   def show
-    send_data(@document.original_file, type: @document.data_type, filename: @document.name)
+    
   end
 
   # GET /documents/new
@@ -33,7 +34,7 @@ mashas-dev
   def create
     @document = Document.new(document_params)
     if current_user.documents.push @document
-      redirect_to user_url(current_user)
+      redirect_to user_path(current_user)
     else
       puts "OH NOOOOOOOO!!!"
     end
