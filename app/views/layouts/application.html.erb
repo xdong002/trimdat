@@ -83,7 +83,7 @@
 
           <!-- Modal Body -->
           <div class="modal-body">
-              <%= form_for @user, url: login_path, method: "post" do |f| %>
+              <%= form_with scope: :user, url: login_path, method: "post" do |f| %>
               <div>
                 <%= f.text_field :user_name, placeholder: "Username" %>
               </div>
@@ -123,7 +123,7 @@
 
             <!-- Modal Body -->
             <div class="modal-body">
-                <%= form_for @user, url: sign_up_path, method: "post" do |f| %>
+                <%= form_with scope: :user, url: sign_up_path, method: "post" do |f| %>
                 <div>
                   <%= f.text_field :user_name, placeholder: "Username" %>
                 </div>

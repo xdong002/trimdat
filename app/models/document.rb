@@ -8,6 +8,7 @@ class Document < ApplicationRecord
 	  # File is now an instance variable so it can be
 	  # accessed in the validation.
 	  @file = params.delete(:file)
+	  @word_count = params.delete(:word_count)
 	  # params.delete_all
 	  super
 	  if @file
@@ -18,8 +19,8 @@ class Document < ApplicationRecord
 	  end
 	end
 
-	def word_count(word)
-	end
+	# def word_count(word)
+	# end
 
 	NUM_BYTES_IN_MEGABYTE = 1048576
 	def file_size_under_one_mb
