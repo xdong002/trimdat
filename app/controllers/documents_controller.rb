@@ -31,7 +31,6 @@ class DocumentsController < ApplicationController
 
   # POST /documents
   def create
-    puts "params for create document: #{params}"
     @document = Document.new(document_params)
     if current_user.documents.push @document
       redirect_to user_path(current_user)
