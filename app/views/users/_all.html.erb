@@ -1,40 +1,25 @@
-<div class="allFiles">
+<div class="allBoxes">
 
 <% @documents.reverse_each do |d| %>
 
-  <div class="allBoxes">
-    <div class="allBox">
-      <div class="fileBox">
-        <!-- <img src='<%=image_path("file.png")%>' alt="file"> -->
-        <!-- <%= link_to image_tag("file.png", border: 0), url_for(action: 'download_origin', controller: 'documents', id: "#{d.id}"), data: {confirm: "Download file?"} %> -->
-        <%= link_to image_tag("file.png", border: 0), url_for(action: 'show', controller: 'documents', id: "#{d.id}") %>
-      </div>
-      <div class="fileName">
-        <%= d.name %>
-      </div>
-      <div class="completedFile">
-      <% if d.fixed_file != nil %>
-        <%= link_to image_tag("file.png", border: 0), url_for(action: 'show', controller: 'documents', id: "#{d.id}"), data: {confirm: "Download file?"} %>
-      <% else %>
-        <img class="completed" src='<%=image_path("file.png")%>'>
-      <% end %>
-        <img class="check" src='<%=image_path("check.png")%>'>
-      </div>
+  <div class="allBox">
 
-      <%= link_to document_destroy_path(d, :id => d.id), controller: 'documents', action: 'destroy', method: :delete, style: "float: right" do %>
-        <i class="glyphicon glyphicon-trash"></i>
-      <% end %>
-
+    <div class="allFileContainer">
+      <img  src='<%=image_path("file.png")%>'>
     </div>
+
+    <div class="allFileName">
+      <span><%= d.name %></span>
+    </div>
+
     <div class="progressBar">
-      <div class="meterInitial">
-      </div>
-      <div class="progressWord">
-        15% : Pending
-      </div>
+
     </div>
+
   </div>
 
-<% end %>
 
-    </div>
+
+  <% end %>
+
+</div>
