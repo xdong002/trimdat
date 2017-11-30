@@ -13,10 +13,9 @@ class DocumentsController < ApplicationController
 
   # GET /documents/1
   def show
-    
+
   end
 
-  # GET /documents/new
   def new
   #import the file as an array
   # File.open("./FL_insurance_sample.csv", "r") do |f|
@@ -41,6 +40,11 @@ class DocumentsController < ApplicationController
   end
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  def show
+  end
+>>>>>>> e5d114af7409efb113ddff68f96e2aeb56c99607
 
 <<<<<<< HEAD
 =======
@@ -105,6 +109,6 @@ class DocumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:file)
+      params.require(:document).permit(:file, :sort_by, :rmv_duplicate, :word_count, :customize)
     end
 end
