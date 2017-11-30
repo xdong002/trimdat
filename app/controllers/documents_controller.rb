@@ -32,6 +32,7 @@ class DocumentsController < ApplicationController
 
   # POST /documents
   def create
+    puts "params for create document: #{params}"
     @document = Document.new(document_params)
     if current_user.documents.push @document
       redirect_to user_path(current_user)
@@ -80,6 +81,6 @@ class DocumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:file)
+      params.require(:document).permit(:file, :sort_by, :rmv_duplicate, :word_count, :customize)
     end
 end
