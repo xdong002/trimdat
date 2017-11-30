@@ -1,4 +1,5 @@
 module DocumentsHelper
+
   # array_of_lines = []
 
   #import the file as an array
