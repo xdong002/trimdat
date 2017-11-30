@@ -14,6 +14,6 @@ get '/documents/index', to: 'documents#index', as: 'document_index'
 get '/documents/new', to: 'documents#new', as: 'document_new'
 post '/documents/new', to: 'documents#create'
 get '/documents/show', to: 'documents#show', as: 'document_show'
-
+get '/documents/download', to: 'documents#download_origin'
 
 end
