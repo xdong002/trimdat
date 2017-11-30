@@ -55,15 +55,11 @@ class DocumentsController < ApplicationController
   # PATCH/PUT /documents/1.json
     
   def update
-    # new_contents = erase_blank(@document.file_contents.to_s)
-    # puts "document.file_contents is : #{@document.file_contents}"
-    # puts "document.file_contents.to_s is : #{@document.file_contents.to_s}"
-    # puts "new_contents is : #{new_contents}"
-    # if @document.update(:file_contents => new_contents)
-    #   redirect_to document_path(@document)
-    # else
-    #   puts "OH NOOOOOOOO!!!"
-    # end
+    if @document.update(:original_file => params[:new_content])
+      redirect_to document_path(@document)
+    else
+      puts "OH NOOOOOOOO!!!"
+    end
   end
 
   # DELETE /documents/1
@@ -81,6 +77,6 @@ class DocumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:file, :sort_by, :rmv_duplicate, :word_count, :customize)
+      params.require(:document).permit(:file, :sort_by, :rmv_duplicate, :word_occurrence, :customize)
     end
 end
