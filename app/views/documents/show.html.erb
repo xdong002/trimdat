@@ -1,2 +1,36 @@
 <h1>Documents#show</h1>
 <p>Find me in app/views/documents/show.html.erb</p>
+
+<%= form_with scope: :document, url: documents_new_path, method: "post" do |f| %>
+  <div>
+  <%= f.file_field :file %>
+  </div>
+  <!-- <form id="serviceSelector"> -->
+    <input id="sortCheckBox" type="checkbox" name="sort">Sort<div id="sortInputForm"></div><br>
+    <input id="rmvCheckBox" type="checkbox" name="rmssDuplicate">Remove Duplicate<div id="rmvInputForm"></div><br>
+    <input id="woCheckBox" type="checkbox" name="wordOccurrence">Word Occurrence<div id="woInputForm"></div><br>
+    <input id="customizeCheckBox" type="checkbox" name="customize">Customize<div id="customizeInputForm"></div><br>
+  <!-- </form> -->
+
+  
+
+  <script>
+  	$("#sortCheckBox").on('change', function(){
+  		if(this.checked){$("#sortInputForm").html(`<%= f.text_field :sort_by, placeholder: "Sort by:" %>`)}else{$("#sortInputForm").html("")}
+  	})
+  	$("#rmvCheckBox").on('change', function(){
+  		if(this.checked){$("#rmvInputForm").html(`<%= f.text_field :rmv_duplicate, value: "1", :style => "display: none;" %>`)}else{$("#rmvInputForm").html("")}
+  	})
+  	$("#woCheckBox").on('change', function(){
+  		if(this.checked){$("#woInputForm").html(`<%= f.text_field :word_occurrence, placeholder: "Type search term here" %>`)}else{$("#woInputForm").html("")}
+  	})
+  	$("#customizeCheckBox").on('change', function(){
+  		if(this.checked){$("#customizeInputForm").html(`<%= f.label "Please describe your need" %><%= f.text_area :customize, placeholder: "..." %>`)}else{$("#customizeInputForm").html("")}
+  	})
+  </script>
+
+  <div class="fix">
+
+  </div>
+  <%= f.submit "submit", :class => "btn btn-default"%>
+  <%end%>

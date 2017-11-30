@@ -2,7 +2,7 @@ class Document < ApplicationRecord
   has_many :document_librarys, dependent: :destroy
   has_many :users, through: :document_librarys
 	validate :file_size_under_one_mb, :on => :create
-	# attr_accessor :word_count
+	# attr_accessor :word_occurrence
 
 	def initialize(params = {})
 	  # File is now an instance variable so it can be
@@ -10,12 +10,12 @@ class Document < ApplicationRecord
 	  @file = params.delete(:file)
 	  @sort_by_input = params.delete(:sort_by)
 	  @rmv_duplicate_input = params.delete(:rmv_duplicate)
-	  @word_count_input = params.delete(:word_count)
+	  @word_occurrence_input = params.delete(:word_occurrence)
 	  @customize_input = params.delete(:customize)
-	  @request_hash = {"sort_by" => @sort_by_input, "rmv_duplicate" => @rmv_duplicate_input, "word_count" => @word_count_input, "customize" => @customize_input}
+	  @request_hash = {"sort_by" => @sort_by_input, "rmv_duplicate" => @rmv_duplicate_input, "word_occurrence" => @word_occurrence_input, "customize" => @customize_input}
 
-	  puts "@sort_by = '#{@sort_by}' and is it truthy? #{@sort_by ? "true" : "false"} and class is: #{@sort_by.class}"
-	  puts "@customize = '#{@customize}' and is it truthy? #{@customize ? "true" : "false"} and class is: #{@customize.class}"
+	  puts "@sort_by = '#{@sort_by_input}' and is it truthy? #{@sort_by_input ? "true" : "false"} and class is: #{@sort_by_input.class}"
+	  puts "@customize = '#{@customize_input}' and is it truthy? #{@customize_input ? "true" : "false"} and class is: #{@customize_input.class}"
 
 	  fix_the_file(@request_hash)
 	  super
@@ -41,8 +41,8 @@ class Document < ApplicationRecord
 		puts "rmv method called"
 	end
 
-	def word_count
-		puts "word_count method called"
+	def word_occurrence
+		puts "word_occurrence method called"
 	end
 
 	def customize
