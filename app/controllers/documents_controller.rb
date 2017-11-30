@@ -13,10 +13,9 @@ class DocumentsController < ApplicationController
 
   # GET /documents/1
   def show
-    
+
   end
 
-  # GET /documents/new
   def new
   #import the file as an array
   # File.open("./FL_insurance_sample.csv", "r") do |f|
@@ -41,6 +40,8 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def show
+  end
 
   # def sort_by_first_value_number()
   # #sort by first value, if number is the first value
