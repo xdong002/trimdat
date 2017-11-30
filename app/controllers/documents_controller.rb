@@ -41,6 +41,11 @@ class DocumentsController < ApplicationController
   end
 
 
+<<<<<<< HEAD
+=======
+
+  def show
+>>>>>>> rebasing
   # def sort_by_first_value_number()
   # #sort by first value, if number is the first value
   # #converting to integers and comparing two items in the callback (sorting on them)
@@ -52,7 +57,12 @@ class DocumentsController < ApplicationController
 
   # PATCH/PUT /documents/1
   # PATCH/PUT /documents/1.json
+<<<<<<< HEAD
     
+=======
+  end
+
+>>>>>>> rebasing
   def update
     # new_contents = erase_blank(@document.file_contents.to_s)
     # puts "document.file_contents is : #{@document.file_contents}"
@@ -63,6 +73,16 @@ class DocumentsController < ApplicationController
     # else
     #   puts "OH NOOOOOOOO!!!"
     # end
+<<<<<<< HEAD
+=======
+  end
+
+  # DELETE /documents/1
+  # DELETE /documents/1.json
+  def destroy
+    @document.destroy
+    redirect_to user_path(current_user)
+>>>>>>> rebasing
   end
 
   # DELETE /documents/1
