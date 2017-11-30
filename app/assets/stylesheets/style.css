@@ -395,8 +395,10 @@ hr {
   display: inline-block;
   height: cover;
   width: 60%;
-  background-color: lightgreen;
+  background-color: rgba(255, 255, 255, 0.7);
   margin: 1%;
+  border: 2px groove white;
+  border-radius: 4%;
 }
 
 .fileContainer {
@@ -525,7 +527,36 @@ a:hover {
   margin-top: 1vh;
 }
 
-.fileBox {
-  height: 15vh;
-  width: 15vw;
+.allBoxes{
+  text-align: left;
+}
+
+.allBox {
+  height: 20vh;
+  width: 20%;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin-left: 3.7%;
+  margin-bottom: 2%;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  border-radius: 5%;
+  border: 2px groove white;
+}
+
+.allFileContainer {
+  width: 40%;
+  height: 60%;
+  display: inline-block;
+}
+
+.allFileContainer img {
+  height: 100%;
+}
+
+.allFileName {
+  display: inline-block;
+  min-height: 30%;
+  max-height: 50%;
+  width: 55%;
 }
