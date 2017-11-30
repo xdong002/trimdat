@@ -171,16 +171,44 @@
             <%= f.file_field :file %>
             </div>
 
-            <select class="selectpicker requestBox">
+            <select class="selectpicker requestBox" id="serviceSelector">
               <optgroup label="Free service">
-                <option>Sort</option>
-                <option>Remove double</option>
-                <option>Word Count</option>
+                <option value="sort">Sort</option>
+                <option value="rmDouble">Remove Duplicate</option>
+                <option value="wordCount">Word Count</option>
               </optgroup>
               <optgroup label="Special Request">
-                <option>Customize</option>
+                <option value="customize">Customize</option>
               </optgroup>
             </select>
+
+            <div id="serviceInputForm"></div>
+
+            <script>
+            $("#serviceSelector").on('change', function() {
+              var str;
+              switch($("#serviceSelector option:selected").text()) {
+                  case "Sort":
+                      str = `<%= f.text_field :sort_by, placeholder: "Sort by:" %>`
+                      break;
+                  case "Remove Duplicate":
+                      str = ""
+                      $("#serviceInputForm").html(`<% f.text_field :rmv_duplicate, value: "1" %>`)
+                      break;
+                  case "Word Count":
+                      str = `<%= f.text_field :word_count, placeholder: "Type in your word" %>`
+                      break;
+                  case "Customize":
+                      str = `
+                      <%= f.label "Please describe your need" %>
+                      <%= f.text_area :customize, placeholder: "..." %>`
+                      break;
+                  // default:
+                  //     break;
+              }
+              $("#serviceInputForm").html(str);
+              })
+            </script>
 
             <div class="fix">
 
