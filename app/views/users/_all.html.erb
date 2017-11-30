@@ -1,10 +1,10 @@
-<div class="contentBox">
+<div class="allFiles">
 
 <% @documents.reverse_each do |d| %>
 
-  <div class="content">
-    <div class="fileContainer">
-      <div class="file">
+  <div class="allBoxes">
+    <div class="allBox">
+      <div class="fileBox">
         <!-- <img src='<%=image_path("file.png")%>' alt="file"> -->
         <!-- <%= link_to image_tag("file.png", border: 0), url_for(action: 'download_origin', controller: 'documents', id: "#{d.id}"), data: {confirm: "Download file?"} %> -->
         <%= link_to image_tag("file.png", border: 0), url_for(action: 'show', controller: 'documents', id: "#{d.id}") %>
