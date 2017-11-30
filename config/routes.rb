@@ -15,5 +15,6 @@ get '/documents/new', to: 'documents#new', as: 'document_new'
 post '/documents/new', to: 'documents#create'
 get '/documents/show', to: 'documents#show', as: 'document_show'
 get '/documents/download', to: 'documents#download_origin'
+delete '/documents/destroy/:id', to: 'documents#destroy', as: 'document_destroy'
 
 end

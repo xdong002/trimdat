@@ -69,9 +69,7 @@ class DocumentsController < ApplicationController
   # DELETE /documents/1.json
   def destroy
     @document.destroy
-    respond_to do |format|
-      format.html { redirect_to user_url(current_user), notice: 'Document was successfully destroyed.' }
-    end
+    redirect_to user_path(current_user)
   end
 
   private
