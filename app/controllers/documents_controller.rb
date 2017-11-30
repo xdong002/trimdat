@@ -31,6 +31,7 @@ class DocumentsController < ApplicationController
 
   # POST /documents
   def create
+    puts "params for create document: #{params}"
     @document = Document.new(document_params)
     if current_user.documents.push @document
       redirect_to user_path(current_user)
@@ -39,8 +40,48 @@ class DocumentsController < ApplicationController
     end
   end
 
-
   def show
   end
 
+  # def sort_by_first_value_number()
+  # #sort by first value, if number is the first value
+  # #converting to integers and comparing two items in the callback (sorting on them)
+  # array_of_lines! { |a, b| a[0].to_i <=> b[0].to_i }
+  # #modify the existing array
+  # array_of_lines.uniq!(&:first)
+  # array_of_lines.each { |line| p line }
+  # end
+
+  # PATCH/PUT /documents/1
+  # PATCH/PUT /documents/1.json
+    
+  def update
+    # new_contents = erase_blank(@document.file_contents.to_s)
+    # puts "document.file_contents is : #{@document.file_contents}"
+    # puts "document.file_contents.to_s is : #{@document.file_contents.to_s}"
+    # puts "new_contents is : #{new_contents}"
+    # if @document.update(:file_contents => new_contents)
+    #   redirect_to document_path(@document)
+    # else
+    #   puts "OH NOOOOOOOO!!!"
+    # end
+  end
+
+  # DELETE /documents/1
+  # DELETE /documents/1.json
+  def destroy
+    @document.destroy
+    redirect_to user_path(current_user)
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_document
+      @document = Document.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def document_params
+      params.require(:document).permit(:file, :sort_by, :rmv_duplicate, :word_count, :customize)
+    end
 end

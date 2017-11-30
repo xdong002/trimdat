@@ -15,7 +15,7 @@ body {
 	margin-right: 2px;
   width: auto;
   float: right;
-  height: 50%;
+  height: 6vh;
   margin: 5% 3%;
   border-width: medium;
   background-color: LightBlue;
@@ -57,12 +57,13 @@ header {
 }
 
 .logo {
-  height: 80px;
+  height: 10vh;
   display: inline-block;
   float: left;
-  width: 30%;
-  text-align: justify;
+  width: 50%;
+  text-align: left;
   color: white;
+  font-size:
 }
 
 .logo img {
@@ -74,7 +75,8 @@ header {
 
 .logo h2 {
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: top;
+  font-size: 4vh;
 }
 
 .signin {
@@ -117,7 +119,8 @@ header {
 .topic {
   display: inline-block;
   width: 30%;
-  height: 250px;
+  min-height: 250px;
+  height: cover;
   margin: 0 1.5%;
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 5%;
@@ -320,7 +323,7 @@ header {
 }
 
 .footer {
-  height: 100px;
+  height: cover;
   background-color: CornflowerBlue;
   width: 100%;
   margin-top: 3%;
@@ -332,10 +335,10 @@ header {
 
 .aboutUs {
   background-color: rgba(100,100,0,0.7);
-  height: 200px;
+  height: cover;
   width: 90%;
   display: inline-block;
-  margin: 3% 0;
+  margin: 0 0 3% 0;
 }
 
 .team {
@@ -358,6 +361,7 @@ header {
 
 .mainContent {
   background-color: CadetBlue;
+  min-height: 65vh;
   height: cover;
   width: 90%;
   display: inline-block;
@@ -376,31 +380,36 @@ hr {
 
 .contentNav a {
   color: white;
-  font-size: 28px;
+  font-size: 4vh;
   padding: 0 1%;
   vertical-align: text-bottom;
   border-right: 2px solid white;
 }
 
+.contentNav h3 {
+  font-size: 3vh;
+}
+
 
 .content {
   display: inline-block;
-  height: 180px;
+  height: cover;
   width: 60%;
   background-color: lightgreen;
   margin: 1%;
 }
 
 .fileContainer {
-  height: 55%;
-  width: 100%;
+  height: 13vh;
+  max-width: 100%;
   text-align: left;
   padding-left: 2%;
   padding-top: 1%;
+  vertical-align: top;
 }
 
 .file {
-  height: 90%;
+  height: 100%;
   display: inline-block;
 }
 
@@ -409,11 +418,14 @@ hr {
 }
 
 .fileName {
+  max-height: 5vh;
+  max-width: 10vw;
   display: inline-block;
+  font-size: 2.5vh;
 }
 
 .completedFile {
-  height: 90%;
+  height: 100%;
   display: inline-block;
   float: right;
 }
@@ -430,7 +442,7 @@ hr {
 }
 
 .progressBar {
-  height: 15%;
+  height: 4vh;
   width: 80%;
   border: 2px solid white;
   display: inline-block;
@@ -439,10 +451,12 @@ hr {
   border-bottom-right-radius: 25px;
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
+  margin-bottom: 2vh;
 }
 
 .progressWord {
-  margin-top: -3vh;
+  margin-top: -3.2vh;
+  font-size: 2.2vh;
 }
 
 .meterInitial {
@@ -509,4 +523,9 @@ a:hover {
   height: 3vh;
   width: 25%;
   margin-top: 1vh;
+}
+
+.fileBox {
+  height: 15vh;
+  width: 15vw;
 }
