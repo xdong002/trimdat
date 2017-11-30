@@ -456,6 +456,22 @@ hr {
   margin-bottom: 2vh;
 }
 
+.progress {
+  margin-top: 3%;
+  height: 3.5vh;
+  width: 80%;
+  display: inline-block;
+  border: 2px solid white;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+.progress-bar span {
+  font-weight: bold;
+}
+
 .progressWord {
   margin-top: -3.2vh;
   font-size: 2.2vh;
@@ -507,6 +523,7 @@ hr {
 
 a:hover {
   color: darkred;
+  text-decoration: none;
 }
 
 .flashBox {
@@ -559,4 +576,10 @@ a:hover {
   min-height: 30%;
   max-height: 50%;
   width: 55%;
+}
+
+.toolBtn {
+  vertical-align: middle;
+  display: inline-block;
+  margin: 0 2%;
 }
