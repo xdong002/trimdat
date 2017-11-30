@@ -9,7 +9,6 @@
         <%= link_to image_tag("file.png", border: 0), url_for(action: 'download_origin', controller: 'documents', id: "#{d.id}"), data: {confirm: "Download file?"} %>
       </div>
       <div class="fileName">
-        <h4>FileName</h4>
         <%= d.name %>
       </div>
       <div class="completedFile">
@@ -25,7 +24,7 @@
       <div class="meterInitial">
       </div>
       <div class="progressWord">
-        <span>15% : Pending</span>
+        15% : Pending
       </div>
     </div>
   </div>
