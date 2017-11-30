@@ -351,8 +351,9 @@ header {
 
 .team img {
   border-radius: 50% 50% 50% 50%;
-  height: 100px;
+  height: auto;
   margin: 3% 0 2% 0;
+  width: 30%;
 }
 
 .mainContent {
@@ -496,4 +497,16 @@ a:hover {
   width: 30%;
   display: inline-block;
   margin: 0;
+}
+
+.dropdown {
+  margin-top: 1vh;
+  float: left;
+}
+
+.requestBox {
+  float: left;
+  height: 3vh;
+  width: 25%;
+  margin-top: 1vh;
 }
