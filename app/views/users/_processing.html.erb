@@ -1,1 +1,39 @@
-<h1>processing</h1>
+<div class="contentBox">
+
+<% @documents.reverse_each do |d| %>
+
+  <div class="content">
+    <div class="fileContainer">
+      <div class="file">
+        <!-- <img src='<%=image_path("file.png")%>' alt="file"> -->
+        <%= link_to image_tag("file.png", border: 0), url_for(action: 'download_origin', controller: 'documents', id: "#{d.id}"), data: {confirm: "Download file?"} %>
+      </div>
+      <div class="fileName">
+        <%= d.name %>
+      </div>
+      <div class="completedFile">
+      <% if d.fixed_file != nil %>
+        <%= link_to image_tag("file.png", border: 0), url_for(action: 'show', controller: 'documents', id: "#{d.id}"), data: {confirm: "Download file?"} %>
+      <% else %>
+        <img class="completed" src='<%=image_path("file.png")%>'>
+      <% end %>
+        <img class="check" src='<%=image_path("check.png")%>'>
+      </div>
+
+      <%= link_to document_destroy_path(d, :id => d.id), controller: 'documents', action: 'destroy', method: :delete, style: "float: right" do %>
+        <i class="glyphicon glyphicon-trash"></i>
+      <% end %>
+
+    </div>
+    <div class="progressBar">
+      <div class="meterInitial">
+      </div>
+      <div class="progressWord">
+        15% : Pending
+      </div>
+    </div>
+  </div>
+
+<% end %>
+
+    </div>
