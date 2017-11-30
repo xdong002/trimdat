@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <script src="https://code.jquery.com/jquery-3.2.1.js" ></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -46,6 +49,8 @@
           <button class="btn btn-lg btn3d" type="button" name="signup" data-toggle="modal" data-target="#myModalSignUp">Sign Up</button>
           <button class="btn btn-lg btn3d" type="button" name="signin" data-toggle="modal" data-target="#myModalSignIn">Sign In</button>
         <%end%>
+      </div>
+
         <div class="fix">
         </div>
 
@@ -163,6 +168,21 @@
             <%= form_with model: @document, url: login_path, method: "post" do |f| %>
             <div>
             <%= f.file_field :file %>
+            </div>
+
+            <select class="selectpicker requestBox">
+              <optgroup label="Free service">
+                <option>Sort</option>
+                <option>Remove double</option>
+                <option>Word Count</option>
+              </optgroup>
+              <optgroup label="Special Request">
+                <option>Customize</option>
+              </optgroup>
+            </select>
+
+            <div class="fix">
+
             </div>
             <%= f.submit "upload", :class => "btn btn-default"%>
             <%end%>
