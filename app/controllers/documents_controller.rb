@@ -40,6 +40,7 @@ class DocumentsController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 =======
@@ -61,6 +62,10 @@ class DocumentsController < ApplicationController
     
 =======
   end
+=======
+  # PATCH/PUT /documents/1
+  # PATCH/PUT /documents/1.json
+>>>>>>> required documentshelper
 
 >>>>>>> rebasing
   def update

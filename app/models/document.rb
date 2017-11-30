@@ -11,7 +11,7 @@ class Document < ApplicationRecord
 	  if @file
 	    self.name = sanitize_filename(@file.original_filename)
 	    self.data_type = @file.content_type
-	    self.original_file = @file.read
+	    self.original_file = @file.read.force_encoding('Windows-1252').encode('UTF-8')
 	    self.content_status = "Pending"
 	  end
 	end
