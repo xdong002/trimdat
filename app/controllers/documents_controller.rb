@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
 
-  before_action :set_document, only: [:show, :edit, :update, :destroy, :download_origin]
+  before_action :set_document, only: [:show, :edit, :update, :destroy, :download_origin, :fix]
 
   # GET /documents
   # def index
@@ -53,13 +53,19 @@ class DocumentsController < ApplicationController
 
   # PATCH/PUT /documents/1
   # PATCH/PUT /documents/1.json
+
+  def fix
+    puts "yo! fix called:)"
+    fix_file(document_params, @document.original_file)
+  end
     
   def update
-    if @document.update(:original_file => params[:new_content])
-      redirect_to document_path(@document)
-    else
-      puts "OH NOOOOOOOO!!!"
-    end
+    puts "yo! update called:)"
+    # if @document.update(:original_file => params[:new_content])
+    #   redirect_to document_path(@document)
+    # else
+    #   puts "OH NOOOOOOOO!!!"
+    # end
   end
 
   # DELETE /documents/1

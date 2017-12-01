@@ -16,7 +16,9 @@
     <div class="progressBar">
       <span class="glyphicon glyphicon-link toolBtn" title = "Share file"> </span>
       <span class="glyphicon glyphicon-envelope toolBtn" title = "Email file"> </span>
+      <%= link_to url_for(action: 'download_origin', controller: 'documents', id: "#{d.id}"), data: {confirm: 'Download file?'} do %>
       <span class="glyphicon glyphicon-download-alt toolBtn" title = "Download file"></span>
+      <% end %>
       <%= link_to document_destroy_path(d, :id => d.id), controller: 'documents', action: 'destroy', method: :delete do %>
       <span class="glyphicon glyphicon-trash toolBtn" title = "Delete file"> </span>
       <% end %>
