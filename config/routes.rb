@@ -13,8 +13,11 @@ get '/about', to: 'sessions#index', as: 'about'
 get '/documents/index', to: 'documents#index', as: 'document_index'
 get '/documents/new', to: 'documents#new', as: 'document_new'
 post '/documents/new', to: 'documents#create'
-get '/documents/show', to: 'documents#show', as: 'document_show'
 get '/documents/download', to: 'documents#download_origin'
 delete '/documents/destroy/:id', to: 'documents#destroy', as: 'document_destroy'
+get '/documents/:id', to: 'documents#show', as: 'document_show'
+put '/documents/:id', to: 'documents#update'
+put '/documents/fix/:id', to: 'documents#fix', as: 'document_fix'
+
 
 end
