@@ -156,7 +156,7 @@ header {
   min-height: 250px;
   height: cover;
   margin: 0 1.5%;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(176,224,230, 0.7);
   border-radius: 5%;
   vertical-align: top;
   color: black;
@@ -257,10 +257,8 @@ header {
   height: cover;
   background-color: #fcfcfc;
   background: rgba(255, 255, 255, 0.2);
-  padding: 10px 0;
+  padding: .6% 0;
   width: 80%;
-  height: 50%
-  margin-top: 3%;
   display: inline-block;
   font-size: 14px;
 }
@@ -659,3 +657,6 @@ body {
   width: 100%;
 }
 
+.modal {
+  color: black;
+}
