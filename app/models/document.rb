@@ -12,7 +12,27 @@ class Document < ApplicationRecord
 	  if @file
 	    self.name = sanitize_filename(@file.original_filename)
 	    self.data_type = @file.content_type
-	    self.original_file = @file.read.force_encoding('Windows-1252').encode('UTF-8')
+	    if self.data_type == "text/csv" then puts "got text/csv" end
+	    if self.data_type == "text/plain" then puts "got text/plain" end
+	    if self.data_type != "text/csv" && self.data_type != "text/plain"
+	    	self.original_file = ""
+	    	return
+	    end
+
+	    begin  # "try" block
+		    puts 'I am before the raise.'
+		    self.original_file = @file.read.encode('utf-8', :invalid => :replace, :undef => :replace)
+		    puts "OF: #{self.original_file}"
+		    # Encoding::UndefinedConversionError ("\xAE" from ASCII-8BIT to UTF-8):
+		    puts 'I am after the raise.'  # won't be executed
+			rescue => e#Exception
+		    self.original_file = ""
+		    self.original_file = @file.read.force_encoding('iso-8859-1').encode('utf-8')
+				logger.error e.message
+		    # puts "I refuse to fail or be stopped!"
+		  end
+
+			# self.original_file = f_two.read.force_encoding('Windows-1252').encode('UTF-8')
 	    self.content_status = "Pending"
 	  end
 	end
