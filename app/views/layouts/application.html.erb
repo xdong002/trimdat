@@ -38,14 +38,14 @@
         </div>
         <% if current_user %>
           <div class="signin">
-            <%= button_to("Log out", logout_path, method: :delete, :class => "btn btn-lg btn3d") %>
-            <%= button_to("Profile", user_path(current_user), method: :get, :class => "btn btn-lg btn3d") %>
-            <%= button_to("Home", '/', method: :get, :class => "btn btn-lg btn3d") %>
+            <%= button_to("Log out", logout_path, method: :delete, :class => "btn btn-lg btn-info") %>
+            <%= button_to("Profile", user_path(current_user), method: :get, :class => "btn btn-lg btn-info") %>
+            <%= button_to("Home", '/', method: :get, :class => "btn btn-lg btn-info") %>
           </div>
         <%else%>
           <div class="signin">
-            <button class="btn btn-lg btn3d" type="button" name="signup" data-toggle="modal" data-target="#myModalSignUp">Sign Up</button>
-            <button class="btn btn-lg btn3d" type="button" name="signin" data-toggle="modal" data-target="#myModalSignIn">Sign In</button>
+            <button class="btn btn-lg btn-info" type="button" name="signup" data-toggle="modal" data-target="#myModalSignUp">Sign Up</button>
+            <button class="btn btn-lg btn-info" type="button" name="signin" data-toggle="modal" data-target="#myModalSignIn">Sign In</button>
           </div>
         <%end%>
       </div>
