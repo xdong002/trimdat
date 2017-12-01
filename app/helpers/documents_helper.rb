@@ -1,5 +1,14 @@
 module DocumentsHelper
 
+
+  def sort_by_first_value_number()
+    #sort by first value, if number is the first value
+    #converting to integers and comparing two items in the callback (sorting on them)
+    array_of_lines! { |a, b| a[0].to_i <=> b[0].to_i }
+    #modify the existing array
+    array_of_lines.uniq!(&:first)
+    array_of_lines.each { |line| p line }
+  end 
   #Method called in show.html.erb@users return briefly formatted csv file
   def render_csv content_in
     hash_array = content_to_hash_array(content_in)
@@ -63,15 +72,6 @@ module DocumentsHelper
     hash_in.each {|key, value| self.public_send(key) if self.respond_to? key}
   end
 
-  # def sort_by_first_value_number()
-  #   #sort by first value, if number is the first value
-  #   #converting to integers and comparing two items in the callback (sorting on them)
-  #   array_of_lines! { |a, b| a[0].to_i <=> b[0].to_i }
-  #   #modify the existing array
-  #   array_of_lines.uniq!(&:first)
-  #   array_of_lines.each { |line| p line }
-  # end
-
   def sort_by
     puts "sort_by method inside Helper called!!!!!!!"
     header_array = get_header_array(@content_in)
@@ -109,22 +109,5 @@ module DocumentsHelper
   def customize
     puts "customize method called"
   end
-
-  # array_of_lines = []
-
-  # import the file as an array
-  # File.open("./FL_insurance_sample.csv", "r") do |f|
-  #   f.each_line do |line|
-  #   array_of_lines += line.split(/\t|\n|\r|\r\n/)
-  # end
-
-  # def sort_by_first_value_number()
-  # #sort by first value, if number is the first value
-  # #converting to integers and comparing two items in the callback (sorting on them)
-  # array_of_lines! { |a, b| a[0].to_i <=> b[0].to_i }
-  # #modify the existing array
-  # array_of_lines.uniq!(&:first)
-  # array_of_lines.each { |line| p line }
-  # end
 
 end
