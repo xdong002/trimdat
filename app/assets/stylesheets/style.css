@@ -687,3 +687,17 @@ form{
 .progressForDoc {
   width: 60%;
 }
+
+.workForUs {
+  height: 25vh;
+  width: 20%;
+  margin: 0 1%;
+}
+
+.progressBox h1 {
+  display: inline-block;
+}
+
+.wordForWork {
+  width: 100%;
+}
