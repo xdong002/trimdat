@@ -17,11 +17,6 @@ class DocumentsController < ApplicationController
   end
 
   def new
-  #import the file as an array
-  # File.open("./FL_insurance_sample.csv", "r") do |f|
-  #   f.each_line do |line|
-  #   array_of_lines += line.split(/\t|\n|\r|\r\n/)
-  # end
     @document = Document.new
   end
 
@@ -32,7 +27,11 @@ class DocumentsController < ApplicationController
   # POST /documents
   def create
     @document = Document.new(document_params)
-    if current_user.documents.push @document
+    if @document.original_file == ""
+      flash[:notice] = "File error! Please make sure you upload a txt/csv file encoded in UTF-8"
+      redirect_to user_path(current_user)
+    elsif current_user.documents.push @document
+      flash[:notice] = "#{@document.name} is uploaded!"
       redirect_to user_path(current_user)
     else
       puts "OH NOOOOOOOO!!!"
@@ -58,7 +57,7 @@ class DocumentsController < ApplicationController
 
   def fix
     puts "yo! fix called:)"
-    fix_file(document_params, @document.original_file)
+    fix_file(document_params, @document)
   end
 
   # PATCH/PUT /documents/1

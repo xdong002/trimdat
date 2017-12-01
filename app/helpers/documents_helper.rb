@@ -11,6 +11,7 @@ module DocumentsHelper
   end 
   #Method called in show.html.erb@users return briefly formatted csv file
   def render_csv content_in
+    puts "in render_csv: content_in: #{content_in}"
     hash_array = content_to_hash_array(content_in)
     header_array = get_header_array(content_in)
     return_str = ""
@@ -28,7 +29,9 @@ module DocumentsHelper
     str_array[0].split(/\s*,\s*/)
   end
 
-  def fix_file(params={}, content_in)
+  def fix_file(params={}, document_in)
+    @document = document_in
+    content_in = document_in.original_file
     @sort_by_input = params.delete(:sort_by)
     @rmv_duplicate_input = params.delete(:rmv_duplicate)
     @word_occurrence_input = params.delete(:word_occurrence)
@@ -36,6 +39,7 @@ module DocumentsHelper
     @request_hash = {"sort_by" => @sort_by_input, "rmv_duplicate" => @rmv_duplicate_input, "word_occurrence" => @word_occurrence_input, "customize" => @customize_input}
     @content_in = content_in
     @content_array = content_to_hash_array(@content_in)
+    @frequency = []
     puts "@content_array = #{@content_array}"
     puts "@sort_by = '#{@sort_by_input}' and is it truthy? #{@sort_by_input ? "true" : "false"} and class is: #{@sort_by_input.class}"
     puts "@customize = '#{@customize_input}' and is it truthy? #{@customize_input ? "true" : "false"} and class is: #{@customize_input.class}"
@@ -45,10 +49,7 @@ module DocumentsHelper
 
   def content_to_hash_array content_in
     str_array = content_in.split(/\r\n|\t|\n|\r/)
-    # puts "str_array: #{str_array}"
     header_array = str_array[0].split(/\s*,\s*/)
-    # str_array = content_in.split(/\r\n|\t|\n|\r/)
-    # header_array = str_array[0].split(/\s*,\s*/)
     header_hash = {}
     header_array.each do |header|
       header_hash[:"#{header}"] = header
@@ -70,6 +71,43 @@ module DocumentsHelper
     hash_in.delete_if {|key, value| !value}
     puts "here's the new hash_in: #{hash_in}"
     hash_in.each {|key, value| self.public_send(key) if self.respond_to? key}
+    if @document.data_type == "text/csv"
+      content_array_to_string_for_csv
+    elsif @document.data_type == "text/plain"
+      content_array_to_string_for_txt
+    end
+  end
+
+  def content_array_to_string_for_csv
+    header_array = get_header_array(@content_in)
+    output_str = ""
+    @content_array.each do |r|
+      row_content = ""
+      header_array.each do |c|
+        row_content += "#{r[:"#{c}"]}, "
+      end
+      row_content.gsub!(/\, $/, "")
+      row_content += "\r\n"
+      output_str += row_content
+    end
+    if @frequency != []
+      @frequency.each do |pair|
+        output_str += "#{pair[0]}, #{pair[1]}\r\n"
+      end
+    end
+    p output_str
+  end
+
+  def content_array_to_string_for_txt
+    # @content_array
+    output_str = ""
+    output_str += @content_in
+    if @frequency != []
+      @frequency.each do |pair|
+        output_str += "#{pair[0]}: #{pair[1]}\r\n"
+      end
+    end
+    p output_str
   end
 
   def sort_by
@@ -87,6 +125,7 @@ module DocumentsHelper
 
   def rmv_duplicate
     puts "rmv method called"
+    puts "rmv_duplicate array: #{@content_array.uniq}"
     @content_array = @content_array.uniq
   end
 
@@ -103,7 +142,7 @@ module DocumentsHelper
     frequency = frequency.sort{ |l, r| l[1]<=>r[1] }.reverse
     # frequency.keys.sort.each { |key| puts frequency[key] }
     puts "frequency: #{frequency}"
-    return frequency
+    @frequency = frequency
   end
 
   def customize
