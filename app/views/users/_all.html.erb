@@ -2,6 +2,7 @@
 
 <% @documents.reverse_each do |d| %>
 
+  <%= link_to url_for(action: 'show', controller: 'documents', id: "#{d.id}") do %>
   <div class="allBox">
 
     <div class="allFileContainer">
@@ -13,7 +14,12 @@
     </div>
 
     <div class="progressBar">
-
+      <span class="glyphicon glyphicon-link toolBtn" title = "Share file"> </span>
+      <span class="glyphicon glyphicon-envelope toolBtn" title = "Email file"> </span>
+      <span class="glyphicon glyphicon-download-alt toolBtn" title = "Download file"></span>
+      <%= link_to document_destroy_path(d, :id => d.id), controller: 'documents', action: 'destroy', method: :delete do %>
+      <span class="glyphicon glyphicon-trash toolBtn" title = "Delete file"> </span>
+      <% end %>
     </div>
 
   </div>
@@ -21,5 +27,6 @@
 
 
   <% end %>
+<% end %>
 
 </div>

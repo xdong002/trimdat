@@ -73,6 +73,7 @@ class DocumentsController < ApplicationController
 
 >>>>>>> rebasing
   def update
+<<<<<<< HEAD
     # new_contents = erase_blank(@document.file_contents.to_s)
     # puts "document.file_contents is : #{@document.file_contents}"
     # puts "document.file_contents.to_s is : #{@document.file_contents.to_s}"
@@ -92,6 +93,13 @@ class DocumentsController < ApplicationController
     @document.destroy
     redirect_to user_path(current_user)
 >>>>>>> rebasing
+=======
+    if @document.update(:original_file => params[:new_content])
+      redirect_to document_path(@document)
+    else
+      puts "OH NOOOOOOOO!!!"
+    end
+>>>>>>> de06737fa9836b6605cd71d0f3e1fee1c2826668
   end
 
   # DELETE /documents/1
@@ -109,6 +117,6 @@ class DocumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:file, :sort_by, :rmv_duplicate, :word_count, :customize)
+      params.require(:document).permit(:file, :sort_by, :rmv_duplicate, :word_occurrence, :customize)
     end
 end
