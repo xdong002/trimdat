@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
 
-  before_action :set_document, only: [:show, :edit, :update, :destroy, :download_origin]
+  before_action :set_document, only: [:show, :edit, :update, :destroy, :download_origin, :fix]
 
   # GET /documents
   # def index
@@ -39,9 +39,10 @@ class DocumentsController < ApplicationController
     end
   end
 
-
-
   def show
+  end
+
+
   # def sort_by_first_value_number()
   # #sort by first value, if number is the first value
   # #converting to integers and comparing two items in the callback (sorting on them)
@@ -53,7 +54,15 @@ class DocumentsController < ApplicationController
 
   # PATCH/PUT /documents/1
   # PATCH/PUT /documents/1.json
+
+
+  def fix
+    puts "yo! fix called:)"
+    fix_file(document_params, @document.original_file)
   end
+
+  # PATCH/PUT /documents/1
+  # PATCH/PUT /documents/1.json
 
   def update
     # new_contents = erase_blank(@document.file_contents.to_s)
@@ -61,6 +70,9 @@ class DocumentsController < ApplicationController
     # puts "document.file_contents.to_s is : #{@document.file_contents.to_s}"
     # puts "new_contents is : #{new_contents}"
     # if @document.update(:file_contents => new_contents)
+
+    puts "yo! update called:)"
+    # if @document.update(:original_file => params[:new_content])
     #   redirect_to document_path(@document)
     # else
     #   puts "OH NOOOOOOOO!!!"
@@ -71,7 +83,18 @@ class DocumentsController < ApplicationController
   # DELETE /documents/1.json
   def destroy
     @document.destroy
+    flash[:notice] = "#{@document.name} has been deleted"
     redirect_to user_path(current_user)
   end
 
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_document
+      @document = Document.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def document_params
+      params.require(:document).permit(:file, :sort_by, :rmv_duplicate, :word_occurrence, :customize)
+    end
 end
