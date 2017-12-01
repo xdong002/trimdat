@@ -87,10 +87,23 @@ module DocumentsHelper
 
   def rmv_duplicate
     puts "rmv method called"
+    @content_array = @content_array.uniq
   end
 
   def word_occurrence
     puts "word_occurrence method called"
+    words = @content_in.split(/[^A-Za-z0-9]/)
+    frequency = Hash.new(0)
+    words.each do |word|
+      word = word.gsub(/[^A-Za-z]/, "")
+      if word != "" then frequency[word.downcase] += 1 end
+    end
+    puts "class: #{frequency.class}" 
+    puts "frequency_before: #{frequency}"
+    frequency = frequency.sort{ |l, r| l[1]<=>r[1] }.reverse
+    # frequency.keys.sort.each { |key| puts frequency[key] }
+    puts "frequency: #{frequency}"
+    return frequency
   end
 
   def customize
