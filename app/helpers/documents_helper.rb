@@ -1,13 +1,22 @@
 module DocumentsHelper
 
+  #Method called in show.html.erb@users return briefly formatted csv file
+  def render_csv content_in
+    hash_array = content_to_hash_array(content_in)
+    header_array = get_header_array(content_in)
+    return_str = ""
+    hash_array.each do |h|
+      header_array.each do |e|
+        return_str = return_str + (h[:"#{e}"] || " ") + " | "
+      end
+      return_str += "\n"
+    end
+    return_str
+  end
 
-  def sort_by_first_value_number()
-    #sort by first value, if number is the first value
-    #converting to integers and comparing two items in the callback (sorting on them)
-    array_of_lines! { |a, b| a[0].to_i <=> b[0].to_i }
-    #modify the existing array
-    array_of_lines.uniq!(&:first)
-    array_of_lines.each { |line| p line }
+  def get_header_array content_in
+    str_array = content_in.split(/\r\n|\t|\n|\r/)
+    str_array[0].split(/\s*,\s*/)
   end
 
   def fix_file(params={}, content_in)
@@ -27,8 +36,10 @@ module DocumentsHelper
 
   def content_to_hash_array content_in
     str_array = content_in.split(/\r\n|\t|\n|\r/)
-    puts "str_array: #{str_array}"
+    # puts "str_array: #{str_array}"
     header_array = str_array[0].split(/\s*,\s*/)
+    # str_array = content_in.split(/\r\n|\t|\n|\r/)
+    # header_array = str_array[0].split(/\s*,\s*/)
     header_hash = {}
     header_array.each do |header|
       header_hash[:"#{header}"] = header
@@ -46,18 +57,31 @@ module DocumentsHelper
     hash_array
   end
 
-
-  
-
   def fix_all_requests hash_in
     hash_in.delete_if {|key, value| !value}
-    hash_in.each {|key, value| self.public_send(key) if self.respond_to? key}
     puts "here's the new hash_in: #{hash_in}"
-    puts "content_in: #{@content_in}"
+    hash_in.each {|key, value| self.public_send(key) if self.respond_to? key}
   end
+
+  # def sort_by_first_value_number()
+  #   #sort by first value, if number is the first value
+  #   #converting to integers and comparing two items in the callback (sorting on them)
+  #   array_of_lines! { |a, b| a[0].to_i <=> b[0].to_i }
+  #   #modify the existing array
+  #   array_of_lines.uniq!(&:first)
+  #   array_of_lines.each { |line| p line }
+  # end
 
   def sort_by
     puts "sort_by method inside Helper called!!!!!!!"
+    header_array = get_header_array(@content_in)
+    if !header_array.include? @sort_by_input
+      puts "doesn't include that headerrrrrr header: #{header_array}"
+      puts "@sort_by_input: #{@sort_by_input}, class: #{@sort_by_input.class}"
+      return
+    end
+    @content_array = @content_array[1..-1].sort_by { |k| k[:"#{@sort_by_input}"] }
+    puts "sorted: #{@content_array}"
   end
 
 
