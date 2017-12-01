@@ -1,10 +1,5 @@
 module DocumentsHelper
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> d90c88cdf2b9f1c572540f9e05f77dbd921320f6
   def sort_by_first_value_number()
     #sort by first value, if number is the first value
     #converting to integers and comparing two items in the callback (sorting on them)
@@ -12,11 +7,7 @@ module DocumentsHelper
     #modify the existing array
     array_of_lines.uniq!(&:first)
     array_of_lines.each { |line| p line }
-<<<<<<< HEAD
-=======
-=======
-  end 
->>>>>>> d90c88cdf2b9f1c572540f9e05f77dbd921320f6
+  end
   #Method called in show.html.erb@users return briefly formatted csv file
   def render_csv content_in
     hash_array = content_to_hash_array(content_in)
@@ -34,10 +25,6 @@ module DocumentsHelper
   def get_header_array content_in
     str_array = content_in.split(/\r\n|\t|\n|\r/)
     str_array[0].split(/\s*,\s*/)
-<<<<<<< HEAD
->>>>>>> 7578f9e0653b4cef6532d161d5ba2b0eaa85e90e
-=======
->>>>>>> d90c88cdf2b9f1c572540f9e05f77dbd921320f6
   end
 
   def fix_file(params={}, content_in)
@@ -55,11 +42,6 @@ module DocumentsHelper
     fix_all_requests @request_hash
   end
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> d90c88cdf2b9f1c572540f9e05f77dbd921320f6
   def content_to_hash_array content_in
     str_array = content_in.split(/\r\n|\t|\n|\r/)
     # puts "str_array: #{str_array}"
@@ -83,10 +65,6 @@ module DocumentsHelper
     hash_array
   end
 
-<<<<<<< HEAD
->>>>>>> 7578f9e0653b4cef6532d161d5ba2b0eaa85e90e
-=======
->>>>>>> d90c88cdf2b9f1c572540f9e05f77dbd921320f6
   def fix_all_requests hash_in
     hash_in.delete_if {|key, value| !value}
     puts "here's the new hash_in: #{hash_in}"
@@ -119,7 +97,7 @@ module DocumentsHelper
       word = word.gsub(/[^A-Za-z]/, "")
       if word != "" then frequency[word.downcase] += 1 end
     end
-    puts "class: #{frequency.class}" 
+    puts "class: #{frequency.class}"
     puts "frequency_before: #{frequency}"
     frequency = frequency.sort{ |l, r| l[1]<=>r[1] }.reverse
     # frequency.keys.sort.each { |key| puts frequency[key] }
