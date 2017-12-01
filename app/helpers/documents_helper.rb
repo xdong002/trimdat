@@ -1,5 +1,6 @@
 module DocumentsHelper
 
+
   def sort_by_first_value_number()
     #sort by first value, if number is the first value
     #converting to integers and comparing two items in the callback (sorting on them)
@@ -7,7 +8,7 @@ module DocumentsHelper
     #modify the existing array
     array_of_lines.uniq!(&:first)
     array_of_lines.each { |line| p line }
-  end
+  end 
   #Method called in show.html.erb@users return briefly formatted csv file
   def render_csv content_in
     hash_array = content_to_hash_array(content_in)
@@ -97,7 +98,7 @@ module DocumentsHelper
       word = word.gsub(/[^A-Za-z]/, "")
       if word != "" then frequency[word.downcase] += 1 end
     end
-    puts "class: #{frequency.class}"
+    puts "class: #{frequency.class}" 
     puts "frequency_before: #{frequency}"
     frequency = frequency.sort{ |l, r| l[1]<=>r[1] }.reverse
     # frequency.keys.sort.each { |key| puts frequency[key] }
