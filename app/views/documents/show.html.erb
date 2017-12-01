@@ -1,10 +1,8 @@
 <h1>Documents#show</h1>
 <p>Find me in app/views/documents/show.html.erb</p>
 
-<%= form_with scope: :document, url: documents_new_path, method: "post" do |f| %>
-  <div>
-  <%= f.file_field :file %>
-  </div>
+<%= form_with scope: :document, url: document_fix_path, method: "put" do |f| %>
+
   <!-- <form id="serviceSelector"> -->
     <input id="sortCheckBox" type="checkbox" name="sort">Sort<div id="sortInputForm"></div><br>
     <input id="rmvCheckBox" type="checkbox" name="rmssDuplicate">Remove Duplicate<div id="rmvInputForm"></div><br>
