@@ -584,6 +584,10 @@ a:hover {
   width: 55%;
 }
 
+.allFileName span {
+  word-break: break-all;
+}
+
 .toolBtn {
   vertical-align: middle;
   display: inline-block;
@@ -594,6 +598,7 @@ a:hover {
   min-height: 60vh;
   height: cover;
   width: 80%;
+  margin-top: 3%;
   background-color: CadetBlue;
   display: inline-block;
 }
@@ -677,4 +682,8 @@ form{
 .fileReview {
   overflow-x: auto;
   margin: 1%;
+}
+
+.progressForDoc {
+  width: 60%;
 }
