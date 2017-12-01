@@ -42,6 +42,10 @@
 
   <script>
     $('.submitReq').on('click',function(){
+        if($(".inputForm input:checkbox:checked").length == 0) {
+          alert("Please select at least one service");
+          return;
+        }
         $('.progressBox').append('<h1 class="wordForWork">Our employees are woking very hard!</h1><br>')
         $('.progressBox').append('<img class="workForUs" src="<%=image_path("working1.gif")%>">')
         $('.progressBox').append('<img class="workForUs" src="<%=image_path("working2.gif")%>">')
@@ -64,7 +68,7 @@
   		if(this.checked){$("#rmvInputForm").html(`<%= f.text_field :rmv_duplicate, value: "1", :style => "display: none;" %>`)}else{$("#rmvInputForm").html("")}
   	})
   	$("#woCheckBox").on('change', function(){
-  		if(this.checked){$("#woInputForm").html(`<%= f.text_field :word_occurrence, placeholder: "Type search term here" %>`)}else{$("#woInputForm").html("")}
+  		if(this.checked){$("#woInputForm").html(`<%= f.text_field :word_occurrence, value: "1", :style => "display: none;" %>`)}else{$("#woInputForm").html("")}
   	})
   	$("#customizeCheckBox").on('change', function(){
   		if(this.checked){$("#customizeInputForm").html(`<%= f.label "Please describe your need" %><%= f.text_area :customize, placeholder: "..." %>`)}else{$("#customizeInputForm").html("")}
