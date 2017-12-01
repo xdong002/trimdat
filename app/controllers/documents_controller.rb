@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
 
-  before_action :set_document, only: [:show, :edit, :update, :destroy, :download_origin]
+  before_action :set_document, only: [:show, :edit, :update, :destroy, :download_origin, :fix]
 
   # GET /documents
   # def index
@@ -42,6 +42,9 @@ class DocumentsController < ApplicationController
   def show
   end
 
+
+
+  def show
   # def sort_by_first_value_number()
   # #sort by first value, if number is the first value
   # #converting to integers and comparing two items in the callback (sorting on them)
@@ -53,8 +56,37 @@ class DocumentsController < ApplicationController
 
   # PATCH/PUT /documents/1
   # PATCH/PUT /documents/1.json
-    
+
+
+  def fix
+    puts "yo! fix called:)"
+    fix_file(document_params, @document.original_file)
+  end
+
+  # PATCH/PUT /documents/1
+  # PATCH/PUT /documents/1.json
+
   def update
+    # new_contents = erase_blank(@document.file_contents.to_s)
+    # puts "document.file_contents is : #{@document.file_contents}"
+    # puts "document.file_contents.to_s is : #{@document.file_contents.to_s}"
+    # puts "new_contents is : #{new_contents}"
+    # if @document.update(:file_contents => new_contents)
+
+    puts "yo! update called:)"
+    # if @document.update(:original_file => params[:new_content])
+    #   redirect_to document_path(@document)
+    # else
+    #   puts "OH NOOOOOOOO!!!"
+    # end
+  end
+
+  # DELETE /documents/1
+  # DELETE /documents/1.json
+  def destroy
+    @document.destroy
+    redirect_to user_path(current_user)
+
     if @document.update(:original_file => params[:new_content])
       redirect_to document_path(@document)
     else
