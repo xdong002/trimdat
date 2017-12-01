@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-
+#hi Masha this is Sherwin. if you see this, it means the master repo is fixed
   before_action :set_document, only: [:show, :edit, :update, :destroy, :download_origin, :fix]
 
   # GET /documents
