@@ -43,8 +43,6 @@ class DocumentsController < ApplicationController
   end
 
 
-
-  def show
   # def sort_by_first_value_number()
   # #sort by first value, if number is the first value
   # #converting to integers and comparing two items in the callback (sorting on them)

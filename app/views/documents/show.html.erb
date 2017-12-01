@@ -4,9 +4,10 @@
     <h1><%= @document.name %></h1>
   </div>
 
-<%= form_with scope: :document, url: documents_new_path, method: "post" do |f| %>
+<%= form_with scope: :document, url: document_fix_path, method: "put" do |f| %>
 
-  <form id="serviceSelector">
+  <div id="serviceSelector">
+  <% if @document.data_type == "text/csv" %>
     <div class="inputForm">
       <label for="sortCheckBox" class="btn btn-default">Sort<input type="checkbox" id="sortCheckBox" class="badgebox"><span class="badge">&check;</span></label>
     <div id="sortInputForm"></div>
@@ -15,6 +16,7 @@
       <label for="rmvCheckBox" class="btn btn-default">Remove Duplicate<input type="checkbox" id="rmvCheckBox" class="badgebox"><span class="badge">&check;</span></label>
       <div id="rmvInputForm"></div>
     </div>
+  <% end %>
     <div class="inputForm">
       <label for="woCheckBox" class="btn btn-default">Word Occurrence<input type="checkbox" id="woCheckBox" class="badgebox"><span class="badge">&check;</span></label>
       <div id="woInputForm"></div>
@@ -23,7 +25,13 @@
       <label for="customizeCheckBox" class="btn btn-default">Customize<input type="checkbox" id="customizeCheckBox" class="badgebox"><span class="badge">&check;</span></label>
       <div id="customizeInputForm"></div>
     </div>
-  </form>
+  </div>
+
+  <div class="fix">
+
+  </div>
+
+  <%= f.submit "submit", :class => "btn btn-default"%><br>
 
   <script>
   	$("#sortCheckBox").on('change', function(){
@@ -40,14 +48,12 @@
   	})
   </script>
 
-  <div class="fix">
-
-  </div>
-
-  <%= f.submit "submit", :class => "btn btn-default"%><br>
-
   <div class="fileReview">
-
+    <% if @document.data_type == "text/csv" %>
+      <%= simple_format(render_csv(@document.original_file)) %>
+    <% else %>
+      <%= @document.original_file %>
+    <% end %>
   </div>
 
 
