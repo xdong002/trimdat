@@ -19,6 +19,7 @@ body {
   margin: 5% 3%;
   border-width: medium;
   background-color: LightBlue;
+  border-radius: 2px groove white;
 }
 
 .btn3d:active:focus,
@@ -660,11 +661,16 @@ form{
   vertical-align: top;
 }
 
-.fileReview {
+.fileReviewBox {
   height: cover;
   width: 80%;
-  background-color: red;
+  background-color: Azure;
   display: inline-block;
   margin-bottom: 2%;
-  overflow-x: scroll;
+  text-align: left;
+}
+
+.fileReview {
+  overflow-x: auto;
+  margin: 1%;
 }

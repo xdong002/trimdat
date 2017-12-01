@@ -83,19 +83,7 @@ class DocumentsController < ApplicationController
   # DELETE /documents/1.json
   def destroy
     @document.destroy
-    redirect_to user_path(current_user)
-
-    if @document.update(:original_file => params[:new_content])
-      redirect_to document_path(@document)
-    else
-      puts "OH NOOOOOOOO!!!"
-    end
-  end
-
-  # DELETE /documents/1
-  # DELETE /documents/1.json
-  def destroy
-    @document.destroy
+    flash[:notice] = "#{@document.name} has been deleted"
     redirect_to user_path(current_user)
   end
 
