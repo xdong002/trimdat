@@ -48,12 +48,14 @@
   	})
   </script>
 
-  <div class="fileReview">
-    <% if @document.data_type == "text/csv" %>
+  <div class="fileReviewBox">
+    <div class="fileReview">
+      <% if @document.data_type == "text/csv" %>
       <%= simple_format(render_csv(@document.original_file)) %>
-    <% else %>
-      <%= @document.original_file %>
-    <% end %>
+      <% else %>
+      <%= simple_format(@document.original_file) %>
+      <% end %>
+    </div>
   </div>
 
 
