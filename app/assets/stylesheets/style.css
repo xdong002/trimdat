@@ -4,6 +4,11 @@ body {
   text-align: center;
 }
 
+.btn-info {
+  margin: 4% 3%;
+  float: right;
+}
+
 .btn3d {
 	position: relative;
 	top: -6px;
@@ -17,9 +22,8 @@ body {
   float: right;
   height: 6vh;
   margin: 5% 3%;
-  border-width: medium;
-  background-color: LightBlue;
-  border-radius: 2px groove white;
+  background-color: rgb(0, 153, 153);
+  color: white;
 }
 
 .btn3d:active:focus,
