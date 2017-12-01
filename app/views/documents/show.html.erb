@@ -1,18 +1,29 @@
-<h1>Documents#show</h1>
-<p>Find me in app/views/documents/show.html.erb</p>
+<div class="newRequest">
+
+  <div class="requestFileName">
+    <h1><%= @document.name %></h1>
+  </div>
 
 <%= form_with scope: :document, url: documents_new_path, method: "post" do |f| %>
-  <div>
-  <%= f.file_field :file %>
-  </div>
-  <!-- <form id="serviceSelector"> -->
-    <input id="sortCheckBox" type="checkbox" name="sort">Sort<div id="sortInputForm"></div><br>
-    <input id="rmvCheckBox" type="checkbox" name="rmssDuplicate">Remove Duplicate<div id="rmvInputForm"></div><br>
-    <input id="woCheckBox" type="checkbox" name="wordOccurrence">Word Occurrence<div id="woInputForm"></div><br>
-    <input id="customizeCheckBox" type="checkbox" name="customize">Customize<div id="customizeInputForm"></div><br>
-  <!-- </form> -->
 
-  
+  <form id="serviceSelector">
+    <div class="inputForm">
+      <label for="sortCheckBox" class="btn btn-default">Sort<input type="checkbox" id="sortCheckBox" class="badgebox"><span class="badge">&check;</span></label>
+    <div id="sortInputForm"></div>
+    </div>
+    <div class="inputForm">
+      <label for="rmvCheckBox" class="btn btn-default">Remove Duplicate<input type="checkbox" id="rmvCheckBox" class="badgebox"><span class="badge">&check;</span></label>
+      <div id="rmvInputForm"></div>
+    </div>
+    <div class="inputForm">
+      <label for="woCheckBox" class="btn btn-default">Word Occurrence<input type="checkbox" id="woCheckBox" class="badgebox"><span class="badge">&check;</span></label>
+      <div id="woInputForm"></div>
+    </div>
+    <div class="inputForm">
+      <label for="customizeCheckBox" class="btn btn-default">Customize<input type="checkbox" id="customizeCheckBox" class="badgebox"><span class="badge">&check;</span></label>
+      <div id="customizeInputForm"></div>
+    </div>
+  </form>
 
   <script>
   	$("#sortCheckBox").on('change', function(){
@@ -32,5 +43,13 @@
   <div class="fix">
 
   </div>
-  <%= f.submit "submit", :class => "btn btn-default"%>
+
+  <%= f.submit "submit", :class => "btn btn-default"%><br>
+
+  <div class="fileReview">
+
+  </div>
+
+
   <%end%>
+</div>
