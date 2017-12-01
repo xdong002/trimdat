@@ -17,10 +17,33 @@ module DocumentsHelper
     @customize_input = params.delete(:customize)
     @request_hash = {"sort_by" => @sort_by_input, "rmv_duplicate" => @rmv_duplicate_input, "word_occurrence" => @word_occurrence_input, "customize" => @customize_input}
     @content_in = content_in
+    @content_array = content_to_hash_array(@content_in)
+    puts "@content_array = #{@content_array}"
     puts "@sort_by = '#{@sort_by_input}' and is it truthy? #{@sort_by_input ? "true" : "false"} and class is: #{@sort_by_input.class}"
     puts "@customize = '#{@customize_input}' and is it truthy? #{@customize_input ? "true" : "false"} and class is: #{@customize_input.class}"
 
     fix_all_requests @request_hash
+  end
+
+  def content_to_hash_array content_in
+    str_array = content_in.split(/\r\n|\t|\n|\r/)
+    puts "str_array: #{str_array}"
+    header_array = str_array[0].split(/\s*,\s*/)
+    header_hash = {}
+    header_array.each do |header|
+      header_hash[:"#{header}"] = header
+    end
+    hash_array = [header_hash]
+    str_array[1..-1].each do |data_row|
+      data_array = data_row.split(/\s*,\s*/)
+      new_data_hash = {}
+      data_array.each_with_index do |data, j|
+        header_name = header_array[j]
+        new_data_hash[:"#{header_name}"] = data
+      end
+      hash_array << new_data_hash
+    end
+    hash_array
   end
 
 
