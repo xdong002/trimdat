@@ -7,7 +7,7 @@
 <%= form_with scope: :document, url: document_fix_path, method: "put" do |f| %>
 
   <div id="serviceSelector">
-  <% if @document.data_type == "text/csv" %>
+  <% if @document.data_type == "text/csv" || @document.data_type == "application/vnd.ms-excel" %>
     <div class="inputForm">
       <label for="sortCheckBox" class="btn btn-default">Sort<input type="checkbox" id="sortCheckBox" class="badgebox"><span class="badge">&check;</span></label>
     <div id="sortInputForm"></div>

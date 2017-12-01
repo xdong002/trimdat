@@ -14,7 +14,7 @@ class Document < ApplicationRecord
 	    self.data_type = @file.content_type
 	    if self.data_type == "text/csv" then puts "got text/csv" end
 	    if self.data_type == "text/plain" then puts "got text/plain" end
-	    if self.data_type != "text/csv" && self.data_type != "text/plain"
+	    if self.data_type != "text/csv" && self.data_type != "text/plain" && self.data_type != "application/vnd.ms-excel"
 	    	self.original_file = ""
 	    	return
 	    end
