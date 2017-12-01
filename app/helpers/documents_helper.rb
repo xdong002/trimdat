@@ -1,6 +1,5 @@
 module DocumentsHelper
 
-
   def sort_by_first_value_number()
     #sort by first value, if number is the first value
     #converting to integers and comparing two items in the callback (sorting on them)
@@ -22,9 +21,6 @@ module DocumentsHelper
 
     fix_all_requests @request_hash
   end
-
-
-  
 
   def fix_all_requests hash_in
     hash_in.delete_if {|key, value| !value}
@@ -49,22 +45,5 @@ module DocumentsHelper
   def customize
     puts "customize method called"
   end
-
-  # array_of_lines = []
-
-  # import the file as an array
-  # File.open("./FL_insurance_sample.csv", "r") do |f|
-  #   f.each_line do |line|
-  #   array_of_lines += line.split(/\t|\n|\r|\r\n/)
-  # end
-
-  # def sort_by_first_value_number()
-  # #sort by first value, if number is the first value
-  # #converting to integers and comparing two items in the callback (sorting on them)
-  # array_of_lines! { |a, b| a[0].to_i <=> b[0].to_i }
-  # #modify the existing array
-  # array_of_lines.uniq!(&:first)
-  # array_of_lines.each { |line| p line }
-  # end
 
 end
