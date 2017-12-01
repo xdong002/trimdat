@@ -1,12 +1,32 @@
 body {
-  background-image: url('http://www.freeppt.net/template/business_graphic_ppt_template.jpg');
+  background-image: url('/assets/grey-wallpaper.jpg');
   background-size: cover;
   text-align: center;
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  color: white;
+  background-color: black;
 }
+
+html {
+  width: 100%;
+  height: 100%; }
 
 .btn-info {
   margin: 4% 3%;
   float: right;
+  color: #42DCA3
+  border: 1px solid #42DCA3;
+  background-color: transparent;
+  font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+  border-radius: 0;
 }
 
 .btn3d {
@@ -26,11 +46,20 @@ body {
   color: white;
 }
 
+.btn-default {
+  color: #39B3D7;
+  border: 1px solid #39B3D7;
+  background-color: transparent; }
+
 .btn3d:active:focus,
 .btn3d:focus:hover,
 .btn3d:focus {
 	-moz-outline-style: none;
 	outline: medium none;
+  color: black;
+  border: 1px solid #39B3D7;
+  outline: none;
+  background-color: #39B3D7;
 }
 
 .btn3d:active,
@@ -130,37 +159,13 @@ header {
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 5%;
   vertical-align: top;
+  color: black;
 }
-
-.profileBody {
-  margin-top: 4%;
-  width: 100%;
-  display: inline-block;
-  height: 300px;
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 1%;
-}
-
-.profileBody-left {
-  display: inline-block;
-  width: 50%;
-  height: 100%;
-  vertical-align: middle;
-  text-align: left;
-  margin-top: 2%;
-}
-
-.profileBody-left h1 {
-  margin: 15 0 0 10;
+.topics p{
+  padding: 10px;
 }
 
 .userName h4 {
-  position: relative;
-  display: inline-block;
-  margin-top: 2%;
-}
-
-.currentCity h4 {
   position: relative;
   display: inline-block;
   margin-top: 2%;
@@ -183,12 +188,6 @@ header {
   cursor:pointer;
 }
 
-.profileBody-right {
-  display: inline-block;
-  width: 20%;
-  height: 70%;
-  vertical-align: middle;
-}
 .personalIcon{
   display: inline-block;
   max-height: 100%;
@@ -206,26 +205,6 @@ header {
   cursor:pointer;
 }
 
-.posts {
-  margin-top: 2%;
-  margin-bottom: 2%;
-  width: 100%;
-  display: inline-block;
-  background-image: url('./images/post.jpg');
-  border-radius: 1%;
-  background-size: 100% 100%;
-  color: white;
-}
-
-.post {
-  text-align: justify;
-  width: 60%;
-  display: inline-block;
-  color: white;
-  border-bottom: 2px solid white;
-  margin-bottom: 2%;
-}
-
 .item {
   max-width:960px;
   max-height:500px;
@@ -234,59 +213,6 @@ header {
 .item img {
   min-width:100%;
   min-height: 400px;
-}
-
-.city-list {
-  background-color: rgba(100, 100, 100, 0.5);
-  margin-top: 2%;
-  border-radius: 5%;
-  display: inline-block;
-  margin-right: 1%;
-  width: 24%;
-}
-
-.city {
-  background-color: rgba(255, 255, 255, 0.7);
-  border: 2px solid grey;
-  margin: 0 auto;
-  border-radius: 15%;
-  margin-bottom: 5%;
-  cursor:pointer;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.7) inset, 0 0 0 2px rgba(255, 255, 255, 0.7) inset, 0 2px 0 0 rgba(255, 255, 255, 0.7), 0 5px 5px 1px rgba(255, 255, 255, 0.7);
-}
-
-.city:active,
-.city.active {
-	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.7) inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, 0.3);
-	background-color: white;
-}
-
-.city img {
-  height: 25px;
-  margin-top: 3%;
-}
-
-.selected-city {
-  background-color: rgba(0, 100, 100, 0.5);
-  margin-top: 2%;
-  border-radius: 5%;
-  display: inline-block;
-}
-
-.selected-city-header {
-  height: 300px;
-}
-
-.selected-city-name {
-  margin-top: 2%
-}
-
-.selected-city-name h1 {
-  font-weight: bold;
-}
-
-.selected-city-img {
-  margin-top: 2%
 }
 
 .button-post {
@@ -329,33 +255,40 @@ header {
 
 .footer {
   height: cover;
-  background-color: CornflowerBlue;
+  background-color: #fcfcfc;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 10px 0;
   width: 80%;
+  height: 50%
   margin-top: 3%;
   display: inline-block;
+  font-size: 14px;
 }
 
 .footer a {
   color: black;
+  font-size: 14px;
+  margin: 0;
 }
 
 .aboutUs {
-  background-color: rgba(100,100,0,0.7);
+  background-color: rgba(255, 255, 255, 0.2);
   height: cover;
   width: 90%;
   display: inline-block;
   margin: 0 0 3% 0;
+  color: darkgrey;
+  font-size: 20px;
 }
 
 .team {
   width: 30%;
   height: 500px;
   display: inline-block;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 5%;
   margin: 20px 10px;
   vertical-align: top;
-  color: white;
 }
 
 .team img {
@@ -365,8 +298,12 @@ header {
   width: 30%;
 }
 
+.team a{
+  color: white;
+}
+
 .mainContent {
-  background-color: CadetBlue;
+  background-color: rgba(255, 255, 255, 0.2);
   min-height: 65vh;
   height: cover;
   width: 90%;
@@ -594,7 +531,6 @@ a:hover {
   min-height: 60vh;
   height: cover;
   width: 80%;
-  background-color: CadetBlue;
   display: inline-block;
 }
 
@@ -663,6 +599,7 @@ form{
   width: 24%;
   display: inline-block;
   vertical-align: top;
+  color: black;
 }
 
 .fileReviewBox {
@@ -672,9 +609,29 @@ form{
   display: inline-block;
   margin-bottom: 2%;
   text-align: left;
+  color:black;
 }
 
 .fileReview {
   overflow-x: auto;
   margin: 1%;
 }
+
+::-moz-selection {
+  background: #fcfcfc;
+  background: rgba(255, 255, 255, 0.2);
+  text-shadow: none; }
+
+::selection {
+  background: #fcfcfc;
+  background: rgba(255, 255, 255, 0.2);
+  text-shadow: none; }
+
+img::selection {
+  background: transparent; }
+
+img::-moz-selection {
+  background: transparent; }
+
+body {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2); }
