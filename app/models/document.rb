@@ -27,7 +27,7 @@ class Document < ApplicationRecord
 		    puts 'I am after the raise.'  # won't be executed
 			rescue => e#Exception
 		    self.original_file = ""
-		    self.original_file = @file.read.force_encoding('iso-8859-1').encode('utf-8')
+		    # self.original_file = @file.read.force_encoding('iso-8859-1').encode('utf-8')
 				logger.error e.message
 		    # puts "I refuse to fail or be stopped!"
 		  end
