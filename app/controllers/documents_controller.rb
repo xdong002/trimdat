@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
 #hi Masha this is Sherwin. if you see this, it means the master repo is fixed
-  before_action :set_document, only: [:show, :edit, :update, :destroy, :download_origin, :fix]
+  before_action :set_document, only: [:show, :edit, :update, :destroy, :download_origin, :download_fixed, :fix]
 
   # GET /documents
   # def index
@@ -9,6 +9,10 @@ class DocumentsController < ApplicationController
 
   def download_origin
     send_data(@document.original_file, type: @document.data_type, filename: @document.name)
+  end
+
+  def download_fixed
+    send_data(@document.fixed_file, type: @document.data_type, filename: @document.name)
   end
 
   # GET /documents/1
