@@ -31,6 +31,7 @@ module DocumentsHelper
 
   def fix_file(params={}, document_in)
     @document = document_in
+    @document.update(:content_status => "done")
     content_in = document_in.original_file
     @sort_by_input = params.delete(:sort_by)
     @rmv_duplicate_input = params.delete(:rmv_duplicate)
@@ -40,6 +41,7 @@ module DocumentsHelper
     @content_in = content_in
     @content_array = content_to_hash_array(@content_in)
     @frequency = []
+    @content_out = ""
     puts "@content_array = #{@content_array}"
     puts "@sort_by = '#{@sort_by_input}' and is it truthy? #{@sort_by_input ? "true" : "false"} and class is: #{@sort_by_input.class}"
     puts "@customize = '#{@customize_input}' and is it truthy? #{@customize_input ? "true" : "false"} and class is: #{@customize_input.class}"
@@ -76,6 +78,7 @@ module DocumentsHelper
     elsif @document.data_type == "text/plain"
       content_array_to_string_for_txt
     end
+    @document.update(:fixed_file => @content_out)
   end
 
   def content_array_to_string_for_csv
@@ -95,7 +98,7 @@ module DocumentsHelper
         output_str += "#{pair[0]}, #{pair[1]}\r\n"
       end
     end
-    p output_str
+    @content_out = output_str
   end
 
   def content_array_to_string_for_txt
@@ -107,7 +110,7 @@ module DocumentsHelper
         output_str += "#{pair[0]}: #{pair[1]}\r\n"
       end
     end
-    p output_str
+    @content_out = output_str
   end
 
   def sort_by
@@ -147,6 +150,7 @@ module DocumentsHelper
 
   def customize
     puts "customize method called"
+    @document.update(:content_status => "Request: #{@customize_input}")
   end
 
 end
