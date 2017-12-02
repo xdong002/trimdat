@@ -75,20 +75,27 @@
   	})
   </script>
 
-    <div class="fileReviewNav">
-      <a id="oldFile" href="">Old</a>
-      <a id="newFile" href=""> New</a>
-    </div>
 
-    <div class="fileReviewBox">
-      <div class="fileReview">
-        <% if @document.data_type == "text/csv" %>
-        <%= simple_format(render_csv(@document.original_file)) %>
-        <% else %>
-        <%= simple_format(@document.original_file) %>
-        <% end %>
-      </div>
+<div class="ReviewBox">
+
+  <div class="fileReviewNav">
+    <div class="reviewNav">
+      <a id="oldFile" href=""><span>Old</span></a>
+      <a id="newFile" href=""><span>New</span></a>
     </div>
+  </div>
+
+  <div class="fileReviewBox">
+    <div class="fileReview">
+      <% if @document.data_type == "text/csv" %>
+      <%= simple_format(render_csv(@document.original_file)) %>
+      <% else %>
+      <%= simple_format(@document.original_file) %>
+      <% end %>
+    </div>
+  </div>
+
+</div>
 
 
   <%end%>

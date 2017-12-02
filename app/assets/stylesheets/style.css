@@ -680,26 +680,34 @@ body {
 }
 
 .fileReviewNav {
-  background-color: Azure;
+  width: 80%;
   margin-top: 2%;
+  display: inline-block;
+  text-align: left;
+}
+
+.reviewNav {
   height: 5vh;
+  background-color: Azure;
+  display: inline-block;
+  text-align: center;
   width: 15%;
-  border-top-right-radius: 10%;
-  border-top-left-radius: 10%;
+  margin: 0;
+  border-top-right-radius: 25%;
+  border-top-left-radius: 25%;
 }
 
-.fileReviewNav a {
+.reviewNav a span {
   font-size: 24px;
+  margin: 0;
 }
 
-#oldFile {
+#oldFile span {
+  padding-right: 5%;
   border-right: 2px solid darkblue;
-  margin-right: 1%;
-  padding: 2%;
 }
 
-#newFile {
+#newFile span{
+  padding-left: 5%;
   border-left: 2px solid darkblue;
-  margin-left: 1%;
-  padding: 2%;
 }
