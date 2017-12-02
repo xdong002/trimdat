@@ -3,16 +3,8 @@ body {
   background-size: cover;
   text-align: center;
   font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  position: relative;
-  width: 100%;
-  height: 100%;
   color: white;
-  background-color: black;
 }
-
-html {
-  width: 100%;
-  height: 100%; }
 
 .btn-info {
   margin: 4% 3%;
@@ -278,7 +270,9 @@ header {
   margin: 0 0 3% 0;
   color: darkgrey;
   font-size: 20px;
+  color: white;
 }
+
 
 .team {
   width: 30%;
@@ -303,7 +297,7 @@ header {
 
 .mainContent {
   background-color: rgba(255, 255, 255, 0.2);
-  min-height: 65vh;
+  min-height: 75vh;
   height: cover;
   width: 90%;
   display: inline-block;
@@ -594,7 +588,9 @@ form{
 }
 
 .requestFileName {
-  margin-bottom: 5%;
+  margin-bottom: 2%;
+  width: 50%;
+  display: inline-block;
 }
 
 .inputForm {
@@ -628,7 +624,7 @@ body {
 
 .progressForDoc {
   width: 60%;
-  margin: 1%;
+  margin: 3%;
 }
 /* kkk */
 .workForUs {
@@ -638,7 +634,7 @@ body {
 }
 
 .progressBox {
-  height: 5%;
+  height: 5% 0;
 }
 
 .progressBox h1 {
@@ -654,13 +650,14 @@ body {
 }
 
 .completedLogo {
-  margin: 1%;
+  margin: 3% 0;
+  margin-right: 2%;
   height: 3.5vh;
   vertical-align: top;
 }
 
 .progressBox span {
-  font-size: 24px;
+  font-size: 3.3vh;
 }
 
 
@@ -676,7 +673,7 @@ body {
 
 .fileReview {
   overflow-x: auto;
-  margin: 0;
+  margin: .5% 1%;
 }
 
 .fileReviewNav {
@@ -709,5 +706,37 @@ body {
 
 #newFile span{
   padding-left: 5%;
-  border-left: 2px solid darkblue;
+}
+
+.page-wrap {
+  float: right;
+  margin-right: 8%;
+}
+
+.sidebar {
+  margin-top: 3%;
+  width: 15%;
+  height: 50%;
+  position: fixed;
+  border-radius: 5%;
+  background-color: rgba(255, 255, 255, 0.3);
+  overflow-y: auto;
+}
+
+.sidebar p {
+  font-size: 2.8vh;
+  margin: 2% 0;
+  display: inline-block;
+}
+
+.sidebar span {
+  margin-top: -3%;
+}
+
+.sidebar ul {
+  padding: 0;
+}
+
+.sidebar ul li {
+  list-style: none;
 }

@@ -1,8 +1,31 @@
 <div class="newRequest">
 
+  <div class="page-wrap">
+    <div class="sidebar">
+      <span class="glyphicon glyphicon-link toolBtn" title = "Share file"></span>
+      <p>Shared with:</p>
+      <hr>
+      <ul>
+        <li>Id1</li>
+        <li>Id1</li>
+        <li>Id1</li>
+        <li>Id1</li>
+        <li>Id1</li>
+        <li>Id1</li>
+        <li>Id1</li>
+        <li>Id1</li>
+        <li>Id1</li>
+        <li>Id1</li>
+        <li>Id1</li>
+      </ul>
+    </div>
+  </div>
+
   <div class="requestFileName">
     <h1><%= @document.name %></h1>
+    <hr>
   </div>
+
 
 <%= form_with scope: :document, url: document_fix_path, method: "put" do |f| %>
 
@@ -58,7 +81,7 @@
           <%= link_to url_for(action: 'download_fixed', controller: 'documents', id: "#{@document.id}"), data: {confirm: 'Download new file?'} do %>
             <span class="glyphicon glyphicon-download-alt completedLogo" title = "Download file"></span>
           <% end %>
-          
+
           `) }, 5500);
         setTimeout(function(){ $('.ReviewBox').prepend('<div class="fileReviewNav"><div class="reviewNav"><a id="oldFile" href=""><span>Old</span></a><a id="newFile" href=""><span>New</span></a></div></div>') }, 5500);
 
@@ -68,7 +91,7 @@
         }) (i);
       }
     });
-      
+
   	$("#sortCheckBox").on('change', function(){
   		if(this.checked){$("#sortInputForm").html(`<%= f.text_field :sort_by, placeholder: "Sort by:" %>`)}else{$("#sortInputForm").html("")}
   	})
