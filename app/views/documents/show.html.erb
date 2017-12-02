@@ -53,6 +53,9 @@
         setTimeout(function(){ $('.wordForWork').remove() }, 5500);
         setTimeout(function(){ $('.progressBox').append('<img class="completedLogo" src="<%=image_path("check.png")%>" title = "Request completed">') }, 5500);
         setTimeout(function(){ $('.progressBox').append('<span class="glyphicon glyphicon-download-alt completedLogo" title = "Download file"></span>') }, 5500);
+        setTimeout(function(){ $('.ReviewBox').prepend('<div class="fileReviewNav"><div class="reviewNav"><a id="oldFile" href=""><span>Old</span></a><a id="newFile" href=""><span>New</span></a></div></div>') }, 5500);
+
+
 
       for (var i = 0; i < 101; i++) {
         (function (i) {
@@ -77,13 +80,6 @@
 
 
 <div class="ReviewBox">
-
-  <div class="fileReviewNav">
-    <div class="reviewNav">
-      <a id="oldFile" href=""><span>Old</span></a>
-      <a id="newFile" href=""><span>New</span></a>
-    </div>
-  </div>
 
   <div class="fileReviewBox">
     <div class="fileReview">
