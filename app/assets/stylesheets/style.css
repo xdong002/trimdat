@@ -530,7 +530,7 @@ a:hover {
 }
 
 .newRequest {
-  min-height: 60vh;
+  min-height: 80vh;
   height: cover;
   width: 80%;
   display: inline-block;
@@ -598,26 +598,12 @@ form{
 
 .inputForm {
   height: 25vh;
-  width: 24%;
+  width: 20%;
   display: inline-block;
   vertical-align: top;
   color: black;
 }
 
-.fileReviewBox {
-  height: cover;
-  width: 80%;
-  background-color: Azure;
-  display: inline-block;
-  margin-bottom: 2%;
-  text-align: left;
-  color:black;
-}
-
-.fileReview {
-  overflow-x: auto;
-  margin: 1%;
-}
 
 /* hhh */
 ::-moz-selection {
@@ -641,12 +627,17 @@ body {
 
 .progressForDoc {
   width: 60%;
+  margin: 1%;
 }
 /* kkk */
 .workForUs {
   height: 25vh;
   width: 20%;
   margin: 0 1%;
+}
+
+.progressBox {
+  height: 5%;
 }
 
 .progressBox h1 {
@@ -659,4 +650,55 @@ body {
 
 .modal {
   color: black;
+}
+
+.completedLogo {
+  margin: 1%;
+  height: 3.5vh;
+  vertical-align: top;
+}
+
+.progressBox span {
+  font-size: 24px;
+}
+
+
+.fileReviewBox {
+  height: cover;
+  width: 80%;
+  background-color: Azure;
+  display: inline-block;
+  margin-bottom: 2%;
+  text-align: left;
+  color:black;
+}
+
+.fileReview {
+  overflow-x: auto;
+  margin: 0;
+}
+
+.fileReviewNav {
+  background-color: Azure;
+  margin-top: 2%;
+  height: 5vh;
+  width: 15%;
+  border-top-right-radius: 10%;
+  border-top-left-radius: 10%;
+}
+
+.fileReviewNav a {
+  font-size: 24px;
+}
+
+#oldFile {
+  border-right: 2px solid darkblue;
+  margin-right: 1%;
+  padding: 2%;
+}
+
+#newFile {
+  border-left: 2px solid darkblue;
+  margin-left: 1%;
+  padding: 2%;
 }
