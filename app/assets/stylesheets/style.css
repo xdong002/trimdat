@@ -144,6 +144,7 @@ header {
 .topics {
   display: inline-block;
   width: 100%;
+  padding: 20px;
 }
 
 .title {
@@ -658,4 +659,3 @@ body {
 .wordForWork {
   width: 100%;
 }
-
