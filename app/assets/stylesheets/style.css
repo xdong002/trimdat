@@ -157,7 +157,7 @@ header {
   min-height: 250px;
   height: cover;
   margin: 0 1.5%;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(176,224,230, 0.7);
   border-radius: 5%;
   vertical-align: top;
   color: black;
@@ -258,10 +258,8 @@ header {
   height: cover;
   background-color: #fcfcfc;
   background: rgba(255, 255, 255, 0.2);
-  padding: 10px 0;
+  padding: .6% 0;
   width: 80%;
-  height: 50%
-  margin-top: 3%;
   display: inline-block;
   font-size: 14px;
 }
@@ -533,7 +531,7 @@ a:hover {
 }
 
 .newRequest {
-  min-height: 60vh;
+  min-height: 80vh;
   height: cover;
   width: 80%;
   display: inline-block;
@@ -601,26 +599,12 @@ form{
 
 .inputForm {
   height: 25vh;
-  width: 24%;
+  width: 20%;
   display: inline-block;
   vertical-align: top;
   color: black;
 }
 
-.fileReviewBox {
-  height: cover;
-  width: 80%;
-  background-color: Azure;
-  display: inline-block;
-  margin-bottom: 2%;
-  text-align: left;
-  color:black;
-}
-
-.fileReview {
-  overflow-x: auto;
-  margin: 1%;
-}
 
 /* hhh */
 ::-moz-selection {
@@ -644,12 +628,17 @@ body {
 
 .progressForDoc {
   width: 60%;
+  margin: 1%;
 }
 /* kkk */
 .workForUs {
   height: 25vh;
   width: 20%;
   margin: 0 1%;
+}
+
+.progressBox {
+  height: 5%;
 }
 
 .progressBox h1 {
@@ -659,3 +648,61 @@ body {
 .wordForWork {
   width: 100%;
 }
+<<<<<<< HEAD
+=======
+
+.modal {
+  color: black;
+}
+
+.completedLogo {
+  margin: 1%;
+  height: 3.5vh;
+  vertical-align: top;
+}
+
+.progressBox span {
+  font-size: 24px;
+}
+
+
+.fileReviewBox {
+  height: cover;
+  width: 80%;
+  background-color: Azure;
+  display: inline-block;
+  margin-bottom: 2%;
+  text-align: left;
+  color:black;
+}
+
+.fileReview {
+  overflow-x: auto;
+  margin: 0;
+}
+
+.fileReviewNav {
+  background-color: Azure;
+  margin-top: 2%;
+  height: 5vh;
+  width: 15%;
+  border-top-right-radius: 10%;
+  border-top-left-radius: 10%;
+}
+
+.fileReviewNav a {
+  font-size: 24px;
+}
+
+#oldFile {
+  border-right: 2px solid darkblue;
+  margin-right: 1%;
+  padding: 2%;
+}
+
+#newFile {
+  border-left: 2px solid darkblue;
+  margin-left: 1%;
+  padding: 2%;
+}
+>>>>>>> 1e0e91d6fc5cbdf95b6b81a196dee8376c70af1a

@@ -14,7 +14,7 @@ class Document < ApplicationRecord
 	    self.data_type = @file.content_type
 	    if self.data_type == "text/csv" then puts "got text/csv" end
 	    if self.data_type == "text/plain" then puts "got text/plain" end
-	    if self.data_type != "text/csv" && self.data_type != "text/plain"
+	    if self.data_type != "text/csv" && self.data_type != "text/plain" && self.data_type != "application/vnd.ms-excel"
 	    	self.original_file = ""
 	    	return
 	    end
@@ -27,7 +27,7 @@ class Document < ApplicationRecord
 		    puts 'I am after the raise.'  # won't be executed
 			rescue => e#Exception
 		    self.original_file = ""
-		    self.original_file = @file.read.force_encoding('iso-8859-1').encode('utf-8')
+		    # self.original_file = @file.read.force_encoding('iso-8859-1').encode('utf-8')
 				logger.error e.message
 		    # puts "I refuse to fail or be stopped!"
 		  end

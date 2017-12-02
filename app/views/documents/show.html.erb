@@ -7,7 +7,7 @@
 <%= form_with scope: :document, url: document_fix_path, method: "put" do |f| %>
 
   <div id="serviceSelector">
-  <% if @document.data_type == "text/csv" %>
+  <% if @document.data_type == "text/csv" || @document.data_type == "application/vnd.ms-excel" %>
     <div class="inputForm">
       <label for="sortCheckBox" class="btn btn-default">Sort<input type="checkbox" id="sortCheckBox" class="badgebox"><span class="badge">&check;</span></label>
     <div id="sortInputForm"></div>
@@ -33,26 +33,30 @@
 
   <%= f.submit "submit", :class => "btn btn-default submitReq"%><br>
   <div class="progressBox">
-    <!-- <div class="progress progressForDoc">
-      <div class="progress-bar progress-bar-striped progress-bar-success active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-        <span>45%</span>
-      </div>
-    </div> -->
+
   </div>
 
   <script>
     $('.submitReq').on('click',function(){
+        if($(".inputForm input:checkbox:checked").length == 0) {
+          alert("Please select at least one service");
+          return;
+        }
         $('.progressBox').append('<h1 class="wordForWork">Our employees are woking very hard!</h1><br>')
         $('.progressBox').append('<img class="workForUs" src="<%=image_path("working1.gif")%>">')
         $('.progressBox').append('<img class="workForUs" src="<%=image_path("working2.gif")%>">')
         $('.progressBox').append('<img class="workForUs" src="<%=image_path("working3.gif")%>"><br>')
-      $('.progressBox').append('<div class="progress progressForDoc"><div class="progress-bar progress-bar-striped progress-bar-success active runOnProgress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div></div>')
+        $('.progressBox').append('<div class="progress progressForDoc"><div class="progress-bar progress-bar-striped progress-bar-success active runOnProgress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div></div>')
+
+
+        setTimeout(function(){ $('.workForUs').remove() }, 5500);
+        setTimeout(function(){ $('.wordForWork').remove() }, 5500);
+        setTimeout(function(){ $('.progressBox').append('<img class="completedLogo" src="<%=image_path("check.png")%>" title = "Request completed">') }, 5500);
+        setTimeout(function(){ $('.progressBox').append('<span class="glyphicon glyphicon-download-alt completedLogo" title = "Download file"></span>') }, 5500);
 
       for (var i = 0; i < 101; i++) {
         (function (i) {
           setTimeout(function(){ $('.runOnProgress').attr("style","width: "+ i +"%") && $('.runOnProgress').text(i +"%") }, 50*i);
-          setTimeout(function(){ $('.workForUs').remove() }, 5500);
-          setTimeout(function(){ $('.wordForWork').remove() }, 5500);
         }) (i);
       }
 
@@ -64,22 +68,27 @@
   		if(this.checked){$("#rmvInputForm").html(`<%= f.text_field :rmv_duplicate, value: "1", :style => "display: none;" %>`)}else{$("#rmvInputForm").html("")}
   	})
   	$("#woCheckBox").on('change', function(){
-  		if(this.checked){$("#woInputForm").html(`<%= f.text_field :word_occurrence, placeholder: "Type search term here" %>`)}else{$("#woInputForm").html("")}
+  		if(this.checked){$("#woInputForm").html(`<%= f.text_field :word_occurrence, value: "1", :style => "display: none;" %>`)}else{$("#woInputForm").html("")}
   	})
   	$("#customizeCheckBox").on('change', function(){
   		if(this.checked){$("#customizeInputForm").html(`<%= f.label "Please describe your need" %><%= f.text_area :customize, placeholder: "..." %>`)}else{$("#customizeInputForm").html("")}
   	})
   </script>
 
-  <div class="fileReviewBox">
-    <div class="fileReview">
-      <% if @document.data_type == "text/csv" %>
-      <%= simple_format(render_csv(@document.original_file)) %>
-      <% else %>
-      <%= simple_format(@document.original_file) %>
-      <% end %>
+    <div class="fileReviewNav">
+      <a id="oldFile" href="">Old</a>
+      <a id="newFile" href=""> New</a>
     </div>
-  </div>
+
+    <div class="fileReviewBox">
+      <div class="fileReview">
+        <% if @document.data_type == "text/csv" %>
+        <%= simple_format(render_csv(@document.original_file)) %>
+        <% else %>
+        <%= simple_format(@document.original_file) %>
+        <% end %>
+      </div>
+    </div>
 
 
   <%end%>
