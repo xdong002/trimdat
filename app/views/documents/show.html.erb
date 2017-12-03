@@ -1,6 +1,5 @@
 <%= render 'sharemodal', document: @document %>
 <div class="newRequest">
-
   <div class="page-wrap">
     <div class="sidebar">
       <span class="btn glyphicon glyphicon-link toolBtn" title = "Share file" data-toggle="modal" data-target="#myModalShareFile"></span>
@@ -13,7 +12,7 @@
             <%= user.user_name %>
               <%= link_to unshare_path(:unshare_id => user.id, :document_id => @document.id), controller: 'documents', action: 'unshare', method: :delete, data: {confirm: "Stop sharing this file to #{user.user_name}?"}  do %>
                 <span class="glyphicon glyphicon-trash toolBtn" title = "Delete file"> </span>
-              <% end %>  
+              <% end %>
             </li>
           <% end %>
         <% end %>
@@ -29,7 +28,7 @@
   </div>
 
 
-<%= form_with scope: :document, url: document_fix_path, method: "put" do |f| %>
+<%= form_with scope: :document, url: document_fix_path,class:"formForFile", method: "put" do |f| %>
 
   <div id="serviceSelector">
   <% if @document.data_type == "text/csv" || @document.data_type == "application/vnd.ms-excel" %>
@@ -63,12 +62,12 @@
 
   <div class="ReviewBox">
   <div class="fileReviewNav">
-    <div class="reviewNav">
-      <a id="oldFile" href=""><span>Old</span></a>
-      <% if @document.fixed_file != nil %>
-      <a id="newFile" href=""><span>New</span></a>
-      <% end %>
-    </div>
+    <% if @document.fixed_file != nil %>
+      <div class="reviewNav">
+        <a id="oldFile" href=""><span>Old</span></a>
+        <a id="newFile" href=""><span>New</span></a>
+      </div>
+    <% end %>
   </div>
 
   <div class="fileReviewBox">
@@ -130,7 +129,7 @@
   	})
     $("#oldFile").on("click", function(e){
       e.preventDefault()
-      $(".fileReviewBox").html(`<% if @document.data_type == "text/csv" %>
+      $(".fileReview").html(`<% if @document.data_type == "text/csv" %>
       <%= simple_format(render_csv(@document.original_file)) %>
       <% else %>
       <%= simple_format(@document.original_file) %>
@@ -143,12 +142,12 @@
     function getFixed(){
       var id = <%= raw @document.id %>;
       $.ajax({
-        url: `/documents/get_fixed/${id}.json`, 
+        url: `/documents/get_fixed/${id}.json`,
         success: function(json){
           console.log(json)
           str = json.fixed
           str = str.replace(/\n/g, '<br />');
-          $(".fileReviewBox").html(`${str}`)
+          $(".fileReview").html(`${str}`)
         }
       });
     }
