@@ -1,11 +1,5 @@
 class DocumentsController < ApplicationController
-#hi Masha this is Sherwin. if you see this, it means the master repo is fixed
   before_action :set_document, only: [:show, :edit, :update, :destroy, :download_origin, :download_fixed, :fix, :get_fixed, :share_doc]
-
-  # GET /documents
-  # def index
-  #   @documents = Document.all
-  # end
 
   def download_origin
     send_data(@document.original_file, type: @document.data_type, filename: @document.name)
@@ -69,10 +63,8 @@ class DocumentsController < ApplicationController
     respond_to do |format|
       format.json {render :json => {:fixed => @document.fixed_file}}
     end
-    # response
   end
 
-  # GET /documents/1
   def show
     @user = current_user
   end
@@ -81,11 +73,6 @@ class DocumentsController < ApplicationController
     @document = Document.new
   end
 
-  # GET /documents/1/edit
-  def edit
-  end
-
-  # POST /documents
   def create
     @document = Document.new(document_params)
     @document.owner_id = current_user.id
@@ -98,6 +85,8 @@ class DocumentsController < ApplicationController
       redirect_to user_path(current_user)
     else
       puts "OH NOOOOOOOO!!!"
+      flash[:error] = "Something went wrong :("
+      redirect_to user_path(current_user)
     end
   end
 
@@ -107,16 +96,10 @@ class DocumentsController < ApplicationController
   end
 
   def update
-    puts "yo! update called:)"
-    # if @document.update(:original_file => params[:new_content])
-    #   redirect_to document_path(@document)
-    # else
-    #   puts "OH NOOOOOOOO!!!"
-    # end
+    #**Future goal: let user edit original file online.
+    #**  NOT ROUTED YET!! **
   end
 
-  # DELETE /documents/1
-  # DELETE /documents/1.json
   def destroy
     @document.destroy
     flash[:notice] = "#{@document.name} has been deleted"
