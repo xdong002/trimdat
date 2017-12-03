@@ -8,7 +8,7 @@ module DocumentsHelper
     #modify the existing array
     array_of_lines.uniq!(&:first)
     array_of_lines.each { |line| p line }
-  end 
+  end
   #Method called in show.html.erb@users return briefly formatted csv file
   def render_csv content_in
     puts "in render_csv: content_in: #{content_in}"
@@ -31,7 +31,7 @@ module DocumentsHelper
 
   def fix_file(params={}, document_in)
     @document = document_in
-    @document.update(:content_status => "done")
+    @document.update(:content_status => "Done")
     content_in = document_in.original_file
     @sort_by_input = params.delete(:sort_by)
     @rmv_duplicate_input = params.delete(:rmv_duplicate)
@@ -142,7 +142,7 @@ module DocumentsHelper
       word = word.gsub(/[^A-Za-z]/, "")
       if word != "" then frequency[word.downcase] += 1 end
     end
-    puts "class: #{frequency.class}" 
+    puts "class: #{frequency.class}"
     puts "frequency_before: #{frequency}"
     frequency = frequency.sort{ |l, r| l[1]<=>r[1] }.reverse
     # frequency.keys.sort.each { |key| puts frequency[key] }

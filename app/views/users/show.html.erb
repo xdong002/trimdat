@@ -4,8 +4,7 @@
     <div class="contentNav">
 
       <a id="allDocs" href="">All</a>
-      <a id="processingDocs" href="">Processing</a>
-      <a id="completedDocs" href="">Completed</a>
+      <a id="processingDocs" href="">Special Request</a>
       <button class="btn button-post btn3d" type="button" data-toggle="modal" data-target="#myModalUploadDoc">+</button>
       <h3 class="float-right">New Upload</h3>
 
@@ -23,10 +22,7 @@
         e.preventDefault()
         $('#boxForDocsToRender').html(`<%= render 'all' %>`)
       })
-      $('#completedDocs').on('click', function(e){
-        e.preventDefault()
-        $('#boxForDocsToRender').html(`<%= render 'completed' %>`)
-      })
+
       $('#processingDocs').on('click', function(e){
         e.preventDefault()
         $('#boxForDocsToRender').html(`<%= render 'processing' %>`)
