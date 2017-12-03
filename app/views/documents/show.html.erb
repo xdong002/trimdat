@@ -3,6 +3,7 @@
   <div class="page-wrap">
     <div class="sidebar">
       <p>Owner: <%= @document.owner_name %></p>
+      <br>
       <span class="btn glyphicon glyphicon-link toolBtn" title = "Share file" data-toggle="modal" data-target="#myModalShareFile"></span>
       <p>Shared with:</p>
       <hr>
@@ -13,7 +14,8 @@
             <%= user.user_name %>
             <% if @user.id.to_s == @document.owner_id %>
               <%= link_to unshare_path(:unshare_id => user.id, :document_id => @document.id), controller: 'documents', action: 'unshare', method: :delete, data: {confirm: "Stop sharing this file to #{user.user_name}?"}  do %>
-                <span class="glyphicon glyphicon-trash toolBtn" title = "Delete file"> </span>
+                <span class="glyphicon glyphicon-trash toolBtn shareTrash" title = "Delete file"> </span>
+              <% end %>
               <% end %>
             </li>
           <% end %>
@@ -66,8 +68,8 @@
   <div class="fileReviewNav">
     <% if @document.fixed_file != nil %>
       <div class="reviewNav">
-        <a id="oldFile" href=""><span>Old</span></a>
-        <a id="newFile" href=""><span>New</span></a>
+        <a id="oldFile" href=""><span class="oldFileClick">Old</span></a>
+        <a id="newFile" href=""><span class="newFileClick">New</span></a>
       </div>
     <% end %>
   </div>
@@ -83,6 +85,18 @@
   </div>
 
   <script>
+
+      $('.oldFileClick').click(function(){
+          $(this).css('color', 'CornflowerBlue');
+          $('.newFileClick').css('color','Chocolate');
+        });
+
+      $('.newFileClick').click(function(){
+          $(this).css('color', 'CornflowerBlue');
+          $('.oldFileClick').css('color','Chocolate');
+        });
+
+
     $('.submitReq').on('click',function(){
         if($(".inputForm input:checkbox:checked").length == 0) {
           alert("Please select at least one service");
@@ -146,7 +160,6 @@
       $.ajax({
         url: `/documents/get_fixed/${id}.json`,
         success: function(json){
-          console.log(json)
           str = json.fixed
           str = str.replace(/\n/g, '<br />');
           $(".fileReview").html(`${str}`)

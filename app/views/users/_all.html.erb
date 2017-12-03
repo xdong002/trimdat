@@ -28,7 +28,7 @@
         <% end %>
       <% else %>
         <%= link_to unshare_path(:unshare_id => @user.id, :document_id => d.id, :redirect_target => "user_show"), controller: 'documents', action: 'unshare', method: :delete, data: {confirm: "Stop following this file?"} do %>
-          <span class="glyphicon glyphicon-eye-close toolBtn" title = "Delete file"> </span>
+          <span class="glyphicon glyphicon-eye-close toolBtn" title = "Unfollow file"> </span>
         <% end %>
       <% end %>
     </div>

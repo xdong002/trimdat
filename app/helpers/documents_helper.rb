@@ -1,8 +1,37 @@
 module DocumentsHelper
 
+
+  def sort_by_first_value_number()
+    #sort by first value, if number is the first value
+    #converting to integers and comparing two items in the callback (sorting on them)
+    array_of_lines! { |a, b| a[0].to_i <=> b[0].to_i }
+    #modify the existing array
+    array_of_lines.uniq!(&:first)
+    array_of_lines.each { |line| p line }
+  end
+  #Method called in show.html.erb@users return briefly formatted csv file
+  def render_csv content_in
+    puts "in render_csv: content_in: #{content_in}"
+    hash_array = content_to_hash_array(content_in)
+    header_array = get_header_array(content_in)
+    return_str = ""
+    hash_array.each do |h|
+      header_array.each do |e|
+        return_str = return_str + (h[:"#{e}"] || " ") + " | "
+      end
+      return_str += "\n"
+    end
+    return_str
+  end
+
+  def get_header_array content_in
+    str_array = content_in.split(/\r\n|\t|\n|\r/)
+    str_array[0].split(/\s*,\s*/)
+  end
+
   def fix_file(params={}, document_in)
     @document = document_in
-    @document.update(:content_status => "done")
+    @document.update(:content_status => "Done")
     content_in = document_in.original_file
     @sort_by_input = params.delete(:sort_by)
     @rmv_duplicate_input = params.delete(:rmv_duplicate)
@@ -118,7 +147,7 @@ module DocumentsHelper
       word = word.gsub(/[^A-Za-z]/, "")
       if word != "" then frequency[word.downcase] += 1 end
     end
-    puts "class: #{frequency.class}" 
+    puts "class: #{frequency.class}"
     puts "frequency_before: #{frequency}"
     frequency = frequency.sort{ |l, r| l[1]<=>r[1] }.reverse
     puts "frequency: #{frequency}"
