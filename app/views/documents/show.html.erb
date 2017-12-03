@@ -3,6 +3,7 @@
 
   <div class="page-wrap">
     <div class="sidebar">
+      <p>Owner: <%= @document.owner_name %></p>
       <span class="btn glyphicon glyphicon-link toolBtn" title = "Share file" data-toggle="modal" data-target="#myModalShareFile"></span>
       <p>Shared with:</p>
       <hr>
@@ -11,9 +12,11 @@
           <% if user.id != @user.id %>
             <li>
             <%= user.user_name %>
+            <% if @user.id.to_s == @document.owner_id %>
               <%= link_to unshare_path(:unshare_id => user.id, :document_id => @document.id), controller: 'documents', action: 'unshare', method: :delete, data: {confirm: "Stop sharing this file to #{user.user_name}?"}  do %>
                 <span class="glyphicon glyphicon-trash toolBtn" title = "Delete file"> </span>
               <% end %>  
+            <% end %>  
             </li>
           <% end %>
         <% end %>
