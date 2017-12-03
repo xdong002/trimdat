@@ -21,9 +21,14 @@ class DocumentsController < ApplicationController
     @user_to_unshare = User.find(params[:unshare_id])
     puts @document.users
     unshare_relation = @document.users.find(@user_to_unshare.id)
-    flash[:notice] = "Deleted #{@user_to_unshare.user_name} from sharing list"
     @document.users.delete(unshare_relation)
-    redirect_to document_show_path(@document.id)
+    if params[:redirect_target] == "user_show"
+      flash[:notice] = "You stopped unfollowed file #{@document.name}"
+      redirect_to user_path(current_user.id)
+    else
+      flash[:notice] = "Deleted #{@user_to_unshare.user_name} from sharing list"
+      redirect_to document_show_path(@document.id)
+    end
   end
 
   def share_doc
@@ -83,6 +88,8 @@ class DocumentsController < ApplicationController
   # POST /documents
   def create
     @document = Document.new(document_params)
+    @document.owner_id = current_user.id
+    @document.owner_name = current_user.user_name
     if @document.original_file == ""
       flash[:notice] = "File error! Please make sure you upload a txt/csv file encoded in UTF-8"
       redirect_to user_path(current_user)
