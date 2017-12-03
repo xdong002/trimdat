@@ -49,6 +49,11 @@ module DocumentsHelper
     fix_all_requests @request_hash
   end
 
+  def get_header_array content_in
+    str_array = content_in.split(/\r\n|\t|\n|\r/)
+    str_array[0].split(/\s*,\s*/)
+  end
+
   def content_to_hash_array content_in
     str_array = content_in.split(/\r\n|\t|\n|\r/)
     header_array = str_array[0].split(/\s*,\s*/)
@@ -75,7 +80,7 @@ module DocumentsHelper
     hash_in.each {|key, value| self.public_send(key) if self.respond_to? key}
     if @document.data_type == "text/csv"
       content_array_to_string_for_csv
-    elsif @document.data_type == "text/plain"
+    elsif @document.data_type == "text/plain" ||  @document.data_type == "application/vnd.ms-excel"
       content_array_to_string_for_txt
     end
     @document.update(:fixed_file => @content_out)
@@ -145,7 +150,6 @@ module DocumentsHelper
     puts "class: #{frequency.class}"
     puts "frequency_before: #{frequency}"
     frequency = frequency.sort{ |l, r| l[1]<=>r[1] }.reverse
-    # frequency.keys.sort.each { |key| puts frequency[key] }
     puts "frequency: #{frequency}"
     @frequency = frequency
   end
