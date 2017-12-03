@@ -22,8 +22,14 @@
       <%= link_to url_for(action: 'download_origin', controller: 'documents', id: "#{d.id}"), data: {confirm: 'Download file?'} do %>
         <span class="glyphicon glyphicon-download-alt toolBtn" title = "Download file"></span>
       <% end %>
-      <%= link_to document_destroy_path(d, :id => d.id), controller: 'documents', action: 'destroy', method: :delete, data: {confirm: 'Delete this file?'} do %>
-        <span class="glyphicon glyphicon-trash toolBtn" title = "Delete file"> </span>
+      <% if @user.id.to_s == d.owner_id %>
+        <%= link_to document_destroy_path(d, :id => d.id), controller: 'documents', action: 'destroy', method: :delete, data: {confirm: 'Delete this file?'} do %>
+          <span class="glyphicon glyphicon-trash toolBtn" title = "Delete file"> </span>
+        <% end %>
+      <% else %>
+        <%= link_to unshare_path(:unshare_id => @user.id, :document_id => d.id, :redirect_target => "user_show"), controller: 'documents', action: 'unshare', method: :delete, data: {confirm: "Stop following this file?"} do %>
+          <span class="glyphicon glyphicon-eye-close toolBtn" title = "Delete file"> </span>
+        <% end %>
       <% end %>
     </div>
 
