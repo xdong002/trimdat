@@ -19,6 +19,8 @@ delete '/documents/destroy/:id', to: 'documents#destroy', as: 'document_destroy'
 get '/documents/:id', to: 'documents#show', as: 'document_show'
 put '/documents/:id', to: 'documents#update'
 put '/documents/fix/:id', to: 'documents#fix', as: 'document_fix'
-
+get '/documents/get_fixed/:id', to: 'documents#get_fixed'
+post '/documents/share_doc/:id', to: 'documents#share_doc', as: 'share_doc'
+delete '/documents/unshare/:id', to: 'documents#unshare', as: 'unshare'
 
 end

@@ -121,7 +121,9 @@ module DocumentsHelper
       puts "@sort_by_input: #{@sort_by_input}, class: #{@sort_by_input.class}"
       return
     end
+    header_hash = @content_array[0]
     @content_array = @content_array[1..-1].sort_by { |k| k[:"#{@sort_by_input}"] }
+    @content_array.unshift header_hash
     puts "sorted: #{@content_array}"
   end
 

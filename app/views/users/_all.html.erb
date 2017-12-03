@@ -1,7 +1,7 @@
 <div class="allBoxes">
 
 <% @documents.reverse_each do |d| %>
-
+<%= render 'sharemodal', document: d %>
   <%= link_to url_for(action: 'show', controller: 'documents', id: "#{d.id}") do %>
   <div class="allBox">
 
@@ -12,25 +12,23 @@
     <div class="allFileName">
       <span><%= d.name %></span>
     </div>
+  <% end %>
 
     <div class="progressBar">
-      <span class="glyphicon glyphicon-link toolBtn" title = "Share file"> </span>
+      <a><span class="glyphicon glyphicon-link toolBtn" title = "Share file" data-toggle="modal" data-target="#myModalShareFile"></span></a>
       <%= link_to url_for('https://mail.google.com/mail/?view=cm&fs=1&tf=1'), target: :_blank do%>
         <span class="glyphicon glyphicon-envelope toolBtn" title = "Email file"> </span>
       <% end %>
       <%= link_to url_for(action: 'download_origin', controller: 'documents', id: "#{d.id}"), data: {confirm: 'Download file?'} do %>
         <span class="glyphicon glyphicon-download-alt toolBtn" title = "Download file"></span>
       <% end %>
-      <%= link_to document_destroy_path(d, :id => d.id), controller: 'documents', action: 'destroy', method: :delete do %>
+      <%= link_to document_destroy_path(d, :id => d.id), controller: 'documents', action: 'destroy', method: :delete, data: {confirm: 'Delete this file?'} do %>
         <span class="glyphicon glyphicon-trash toolBtn" title = "Delete file"> </span>
       <% end %>
     </div>
 
   </div>
 
-
-
-  <% end %>
 <% end %>
 
 </div>

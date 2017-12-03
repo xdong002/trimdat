@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
 #hi Masha this is Sherwin. if you see this, it means the master repo is fixed
-  before_action :set_document, only: [:show, :edit, :update, :destroy, :download_origin, :download_fixed, :fix]
+  before_action :set_document, only: [:show, :edit, :update, :destroy, :download_origin, :download_fixed, :fix, :get_fixed, :share_doc]
 
   # GET /documents
   # def index
@@ -15,9 +15,61 @@ class DocumentsController < ApplicationController
     send_data(@document.fixed_file, type: @document.data_type, filename: @document.name)
   end
 
+  def unshare
+    puts params
+    @document = Document.find(params[:document_id])
+    @user_to_unshare = User.find(params[:unshare_id])
+    puts @document.users
+    unshare_relation = @document.users.find(@user_to_unshare.id)
+    flash[:notice] = "Deleted #{@user_to_unshare.user_name} from sharing list"
+    @document.users.delete(unshare_relation)
+    redirect_to document_show_path(@document.id)
+  end
+
+  def share_doc
+    puts "yooo: #{share_doc_params[:user_name]}"
+    puts "did I get document id? #{params[:id]}"
+    if @user_to_share = User.find_by(share_doc_params)
+      puts @user_to_share
+      if @document.users.where(user_name: @user_to_share[:user_name]).exists?
+        flash[:notice] = "#{@user_to_share[:user_name]} is already on the list"
+        if params[:redirect_target] == "user_show"
+          redirect_to user_path(current_user.id)
+        else
+          redirect_to document_show_path(@document.id)
+        end
+      else
+        @document.users << @user_to_share
+        flash[:notice] = "#{@user_to_share[:user_name]} is now on the list"
+        puts params
+        if params[:redirect_target] == "user_show"
+          redirect_to user_path(current_user.id)
+        else
+          redirect_to document_show_path(@document.id)
+        end
+      end
+    else
+      puts "user not found"
+      flash[:notice] = "Can not find user name: #{share_doc_params[:user_name]}"
+      if params[:redirect_target] == "user_show"
+        redirect_to user_path(current_user.id)
+      else
+        redirect_to document_show_path(@document.id)
+      end
+    end
+  end
+
+  def get_fixed
+    puts "get_fixed method called"
+    respond_to do |format|
+      format.json {render :json => {:fixed => @document.fixed_file}}
+    end
+    # response
+  end
+
   # GET /documents/1
   def show
-
+    @user = current_user
   end
 
   def new
@@ -40,9 +92,6 @@ class DocumentsController < ApplicationController
     else
       puts "OH NOOOOOOOO!!!"
     end
-  end
-
-  def show
   end
 
   def fix
@@ -76,5 +125,9 @@ class DocumentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
       params.require(:document).permit(:file, :sort_by, :rmv_duplicate, :word_occurrence, :customize)
+    end
+
+    def share_doc_params
+      params.require(:document).permit(:user_name)
     end
 end

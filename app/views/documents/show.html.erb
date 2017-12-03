@@ -1,25 +1,27 @@
+<%= render 'sharemodal', document: @document %>
 <div class="newRequest">
 
   <div class="page-wrap">
     <div class="sidebar">
-      <span class="glyphicon glyphicon-link toolBtn" title = "Share file"></span>
+      <span class="btn glyphicon glyphicon-link toolBtn" title = "Share file" data-toggle="modal" data-target="#myModalShareFile"></span>
       <p>Shared with:</p>
       <hr>
       <ul>
-        <li>Id1</li>
-        <li>Id1</li>
-        <li>Id1</li>
-        <li>Id1</li>
-        <li>Id1</li>
-        <li>Id1</li>
-        <li>Id1</li>
-        <li>Id1</li>
-        <li>Id1</li>
-        <li>Id1</li>
-        <li>Id1</li>
+        <% @document.users.each do |user| %>
+          <% if user.id != @user.id %>
+            <li>
+            <%= user.user_name %>
+              <%= link_to unshare_path(:unshare_id => user.id, :document_id => @document.id), controller: 'documents', action: 'unshare', method: :delete, data: {confirm: "Stop sharing this file to #{user.user_name}?"}  do %>
+                <span class="glyphicon glyphicon-trash toolBtn" title = "Delete file"> </span>
+              <% end %>  
+            </li>
+          <% end %>
+        <% end %>
       </ul>
     </div>
   </div>
+
+  <!-- <button class="glyphicon glyphicon-link toolBtn" type="button" name="share" data-toggle="modal" data-target="#myModalShareFile">add friend</button> -->
 
   <div class="requestFileName">
     <h1><%= @document.name %></h1>
@@ -59,6 +61,26 @@
 
   </div>
 
+  <div class="ReviewBox">
+  <div class="fileReviewNav">
+    <div class="reviewNav">
+      <a id="oldFile" href=""><span>Old</span></a>
+      <% if @document.fixed_file != nil %>
+      <a id="newFile" href=""><span>New</span></a>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="fileReviewBox">
+    <div class="fileReview">
+      <% if @document.data_type == "text/csv" %>
+      <%= simple_format(render_csv(@document.original_file)) %>
+      <% else %>
+      <%= simple_format(@document.original_file) %>
+      <% end %>
+    </div>
+  </div>
+
   <script>
     $('.submitReq').on('click',function(){
         if($(".inputForm input:checkbox:checked").length == 0) {
@@ -83,7 +105,9 @@
           <% end %>
 
           `) }, 5500);
-        setTimeout(function(){ $('.ReviewBox').prepend('<div class="fileReviewNav"><div class="reviewNav"><a id="oldFile" href=""><span>Old</span></a><a id="newFile" href=""><span>New</span></a></div></div>') }, 5500);
+        setTimeout(function(){
+          getFixed();
+        }, 5500);
 
       for (var i = 0; i < 101; i++) {
         (function (i) {
@@ -104,21 +128,31 @@
   	$("#customizeCheckBox").on('change', function(){
   		if(this.checked){$("#customizeInputForm").html(`<%= f.label "Please describe your need" %><%= f.text_area :customize, placeholder: "..." %>`)}else{$("#customizeInputForm").html("")}
   	})
-  </script>
-
-
-<div class="ReviewBox">
-
-  <div class="fileReviewBox">
-    <div class="fileReview">
-      <% if @document.data_type == "text/csv" %>
+    $("#oldFile").on("click", function(e){
+      e.preventDefault()
+      $(".fileReviewBox").html(`<% if @document.data_type == "text/csv" %>
       <%= simple_format(render_csv(@document.original_file)) %>
       <% else %>
       <%= simple_format(@document.original_file) %>
-      <% end %>
-    </div>
-  </div>
-
+      <% end %>`)
+    })
+    $("#newFile").on("click", function(e){
+      e.preventDefault()
+      getFixed()
+    })
+    function getFixed(){
+      var id = <%= raw @document.id %>;
+      $.ajax({
+        url: `/documents/get_fixed/${id}.json`, 
+        success: function(json){
+          console.log(json)
+          str = json.fixed
+          str = str.replace(/\n/g, '<br />');
+          $(".fileReviewBox").html(`${str}`)
+        }
+      });
+    }
+  </script>
 </div>
 
 
