@@ -27,5 +27,7 @@ module Trimdat
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    # For Heroku deployment
+    config.assets.initialize_on_precompile = false
   end
 end
