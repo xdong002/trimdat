@@ -112,10 +112,9 @@
           return;
         }
 
-        if ($(".spInputForm input:checkbox:checked")) {
+        if ($(".spInputForm input:checkbox:checked").length != 0) {
           alert("Special request send!");
-          getFixed();
-          return;
+          if($(".inputForm input:checkbox:checked").length == 1){return;}
         }
 
         $('.progressBox').html("")
@@ -130,12 +129,12 @@
         setTimeout(function(){ $('.wordForWork').remove() }, 5500);
         setTimeout(function(){ $('.progressBox').append('<img class="completedLogo" src="<%=image_path("check.png")%>" title = "Request completed">') }, 5500);
 
-        setTimeout(function(){ $('.progressBox').append(`
+        setTimeout(function(){ 
+          $('.progressBox').append(`
           <%= link_to url_for(action: 'download_fixed', controller: 'documents', id: "#{@document.id}"), data: {confirm: 'Download new file?'} do %>
             <span class="glyphicon glyphicon-download-alt completedLogo" title = "Download file"></span>
-          <% end %>
-
-          `) }, 5500);
+          <% end %>`);
+          getFixed(); }, 5500);
 
 
       for (var i = 0; i < 101; i++) {
