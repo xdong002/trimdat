@@ -29,6 +29,6 @@ module Trimdat
     config.generators.system_tests = nil
     # For Heroku deployment
     # config.assets.initialize_on_precompile = false
-    config.serve_static_assets = true
+    # config.serve_static_assets = true
   end
 end
