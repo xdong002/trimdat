@@ -1,8 +1,8 @@
   <%= form_with model: @user, url: login_path, method: "post" do |f| %>
-    <div>
+    <div style= "color: black">
       <%= f.text_field :user_name, placeholder: "Username" %>
     </div>
-    <div>
+    <div style= "color: black">
       <%= f.password_field :password, placeholder: "Password" %>
     </div>
     <%= f.submit "Log In"%>
