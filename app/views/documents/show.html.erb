@@ -21,6 +21,21 @@
           <% end %>
         <% end %>
       </ul>
+
+      <div style="text-align: left;">
+        <%= link_to url_for(action: 'download_origin', controller: 'documents', id: "#{@document.id}"), data: {confirm: 'Download file?'} do %>
+          <span class="btn glyphicon toolBtn glyphicon-download-alt completedLogo" title = "Download original file"></span>
+          Download Origin File
+        <% end %>
+        <br>
+      <% if @document.fixed_file != nil %>
+        <%= link_to url_for(action: 'download_fixed', controller: 'documents', id: "#{@document.id}"), data: {confirm: 'Download fixed file?'} do %>
+          <span class="btn glyphicon toolBtn glyphicon-download-alt completedLogo" title = "Download fixed file"></span>
+          Download Fixed File
+        <% end %>
+      <% end %>
+      </div>
+
     </div>
   </div>
 
@@ -59,6 +74,7 @@
   <%= f.submit "submit", :class => "btn btn-default submitReq"%><br>
 
   <div class="progressBox">
+    
   </div>
 
   <div class="ReviewBox">
