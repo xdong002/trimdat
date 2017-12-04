@@ -1,14 +1,18 @@
 class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy, :download_origin, :download_fixed, :fix, :get_fixed, :share_doc]
 
+  # Send original file to user
   def download_origin
     send_data(@document.original_file, type: @document.data_type, filename: @document.name)
   end
 
+  # Send fixed file to user
   def download_fixed
     send_data(@document.fixed_file, type: @document.data_type, filename: @document.name)
   end
 
+  #Delete user from sharing list if current user is the file owner
+  #Remove current user from the sharing list if current user isn't file owner
   def unshare
     puts params
     @document = Document.find(params[:document_id])
@@ -25,11 +29,9 @@ class DocumentsController < ApplicationController
     end
   end
 
+  #Give other users access to this file by user_name
   def share_doc
-    puts "yooo: #{share_doc_params[:user_name]}"
-    puts "did I get document id? #{params[:id]}"
     if @user_to_share = User.find_by(share_doc_params)
-      puts @user_to_share
       if @document.users.where(user_name: @user_to_share[:user_name]).exists?
         flash[:notice] = "#{@user_to_share[:user_name]} is already on the list"
         if params[:redirect_target] == "user_show"
@@ -40,7 +42,6 @@ class DocumentsController < ApplicationController
       else
         @document.users << @user_to_share
         flash[:notice] = "#{@user_to_share[:user_name]} is now on the list"
-        puts params
         if params[:redirect_target] == "user_show"
           redirect_to user_path(current_user.id)
         else
@@ -48,7 +49,6 @@ class DocumentsController < ApplicationController
         end
       end
     else
-      puts "user not found"
       flash[:notice] = "Can not find user name: #{share_doc_params[:user_name]}"
       if params[:redirect_target] == "user_show"
         redirect_to user_path(current_user.id)
@@ -58,21 +58,19 @@ class DocumentsController < ApplicationController
     end
   end
 
+  #return fixed file content in json format
   def get_fixed
-    puts "get_fixed method called"
     respond_to do |format|
       format.json {render :json => {:fixed => @document.fixed_file}}
     end
   end
 
+  #render ocurrent file detail
   def show
     @user = current_user
   end
 
-  def new
-    @document = Document.new
-  end
-
+  #upload file
   def create
     @document = Document.new(document_params)
     @document.owner_id = current_user.id
@@ -90,8 +88,8 @@ class DocumentsController < ApplicationController
     end
   end
 
+  #get fixfile request. triggers methods in document_helper
   def fix
-    puts "yo! fix called:)"
     fix_file(document_params, @document)
   end
 
@@ -100,6 +98,7 @@ class DocumentsController < ApplicationController
     #**  NOT ROUTED YET!! **
   end
 
+  # remove selected file
   def destroy
     @document.destroy
     flash[:notice] = "#{@document.name} has been deleted"

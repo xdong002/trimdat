@@ -9,9 +9,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    login(@user)
-    redirect_to @user
+    if User.find_by({:user_name => user_params[:user_name]}) != nil
+      flash[:error] = "User name already exists. Please try again"
+      redirect_to root_path
+    else
+      @user = User.create(user_params)
+      flash[:success] = "Welcome, #{@user.user_name}!"
+      login(@user)
+      redirect_to @user
+    end
   end
 
   def show
