@@ -75,8 +75,8 @@ class DocumentsController < ApplicationController
     @document = Document.new(document_params)
     @document.owner_id = current_user.id
     @document.owner_name = current_user.user_name
-    if @document.original_file == ""
-      flash[:notice] = "File error! Please make sure you upload a txt/csv file encoded in UTF-8"
+    if @document.original_file == "bad data_type"
+      flash[:notice] = "File error! Please make sure you upload a txt/csv file encoded in UTF-8 or you don't upload an empty file"
       redirect_to user_path(current_user)
     elsif current_user.documents.push @document
       flash[:notice] = "#{@document.name} is uploaded!"
