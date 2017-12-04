@@ -129,7 +129,7 @@
         setTimeout(function(){ $('.wordForWork').remove() }, 5500);
         setTimeout(function(){ $('.progressBox').append('<img class="completedLogo" src="<%=image_path("check.png")%>" title = "Request completed">') }, 5500);
 
-        setTimeout(function(){ 
+        setTimeout(function(){
           $('.progressBox').append(`
           <%= link_to url_for(action: 'download_fixed', controller: 'documents', id: "#{@document.id}"), data: {confirm: 'Download new file?'} do %>
             <span class="glyphicon glyphicon-download-alt completedLogo" title = "Download file"></span>
