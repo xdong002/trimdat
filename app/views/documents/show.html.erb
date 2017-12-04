@@ -82,6 +82,7 @@
     <% if @document.fixed_file != nil %>
       <div class="reviewNav">
         <a id="oldFile" href=""><span class="oldFileClick">Old</span></a>
+        <span class="justLine"> </span>
         <a id="newFile" href=""><span class="newFileClick">New</span></a>
       </div>
     <% end %>
@@ -118,10 +119,6 @@
         }
 
         $('.progressBox').html("")
-        $('.progressBox').append('<h1 class="wordForWork">Our employees are woking very hard!</h1><br>')
-        $('.progressBox').append('<img class="workForUs" src="<%=image_path("working1.gif")%>">')
-        $('.progressBox').append('<img class="workForUs" src="<%=image_path("working2.gif")%>">')
-        $('.progressBox').append('<img class="workForUs" src="<%=image_path("working3.gif")%>"><br>')
         $('.progressBox').append('<div class="progress progressForDoc"><div class="progress-bar progress-bar-striped progress-bar-success active runOnProgress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div></div>')
 
 
